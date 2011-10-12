@@ -1,0 +1,5 @@
+{
+	"html": "ace.html",
+	"css": "ace.css",
+	"js": ["order!ace", "order!themes/theme-vibrant_ink", "order!modes/mode-javascript", "order!init"]
+}
