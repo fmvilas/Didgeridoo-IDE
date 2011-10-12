@@ -1,11 +1,13 @@
 #didgeridoo-code-editor {
 	position: absolute;
-	left: 0; top: 40px;
+	left: 0; top: 35px;
 	right: 0; bottom: 0;
+	background-color: #1C140D;
+	border-top: #CBE86B 1px dotted;
 }
 
 #didgeridoo-code-editor-ace { 
-    margin: 0;
+    margin: 10px 0 0 0;
     position: absolute;
     top: 0;
     bottom: 0;
