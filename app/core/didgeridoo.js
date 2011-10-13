@@ -133,7 +133,6 @@ var didgeridoo = (function () {
 								} else {
 									deps.js[i] = _.MODULES_DIR + '/' + module + '/' + deps.js[i];
 								}
-								console.log(deps.js[i]);
 							}
 							if(typeof callback == 'function') {
 								require(deps.js, callback);

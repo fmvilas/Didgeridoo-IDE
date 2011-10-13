@@ -39,32 +39,46 @@ didgeridoo.ui.layout = $('body').layout({
     //
     //Events
     //
-    onclose: function(paneName, thePane) {
-        var $btn = $('.ui-layout-pane-toolbar-toggler', thePane);
+    onclose_end: function(paneName, thePane) {
+        var $thePane = $(thePane),
+        	$toolbar = $('#' + $thePane.attr('id') + '-toolbar'),
+        	$btn = $('.ui-layout-pane-toolbar-toggler', $toolbar);
+        	
         $btn.addClass('ui-layout-pane-toolbar-toggler-pin');
         $btn.attr('title', 'Pin panel');
+        $toolbar.stop().fadeOut();
     },
-    onopen: function(paneName, thePane, state) {
-        if(!state.isSliding) {
-            var $btn = $('.ui-layout-pane-toolbar-toggler', thePane);
-            $btn.removeClass('ui-layout-pane-toolbar-toggler-pin');
-            $btn.attr('title', 'Unpin panel');
-        }
+    onopen_end: function(paneName, thePane) {
+        var $thePane = $(thePane),
+        	$toolbar = $('#' + $thePane.attr('id') + '-toolbar'),
+	        	$btn = $('.ui-layout-pane-toolbar-toggler', $toolbar);
+	        	
+        $btn.removeClass('ui-layout-pane-toolbar-toggler-pin');
+        $btn.attr('title', 'Unpin panel');
+        placeToolbar(paneName, thePane);
     },
     onresize: function(paneName, thePane) {
-    	var $thePane = $(thePane);
-    	
-    	switch (paneName) {
-    		case 'west':
-    			$('#ui-layout-west-toolbar').css('left', $thePane.position().left + $thePane.width() + 3);
-    		break;
-    		case 'east':
-    			var $toolbar = $('#ui-layout-east-toolbar');
-    			$toolbar.css('left', $thePane.position().left - $toolbar.width() - 10);
-    		break;
-    	}
+    	placeToolbar(paneName, thePane);
     }
 });
+
+var placeToolbar = function(paneName, thePane) {
+	var $thePane = $(thePane);
+	
+	switch (paneName) {
+		case 'west':
+			$('#ui-layout-west-toolbar').css('left', $thePane.position().left + $thePane.width() + 3);
+		break;
+		case 'east':
+			var $toolbar = $('#ui-layout-east-toolbar');
+			$toolbar.css('left', $thePane.position().left - $toolbar.width() - 10);
+		break;
+		case 'south':
+			var $toolbar = $('#ui-layout-east-toolbar');
+			$toolbar.css('top', $pane.position().top - $toolbar.height() - 21);
+		break;
+	}
+};
 
 
 $('#ui-layout-west').hover(function() {
@@ -162,10 +176,12 @@ $('#ui-layout-south-toolbar').hover(function() {
 //      (.ui-layout-pane-toolbar-toggler) instead of id selector
 //      (#ui-layout-pane-toolbar-toggler), which doesn't exist
 $('.ui-layout-pane-toolbar-toggler').click(function() {
-    panePosition = $(this).parents('.ui-layout-pane').attr('pane');
-
+	var $me = $(this);
+	
+    panePosition = $('#' + $me.parent().data('panel')).attr('pane');
+    
     if(panePosition && panePosition.length) {
-        if($(this).hasClass('ui-layout-pane-toolbar-toggler-pin')) {
+        if($me.hasClass('ui-layout-pane-toolbar-toggler-pin')) {
             didgeridoo.ui.layout.open(panePosition);
         } else {
             didgeridoo.ui.layout.close(panePosition);
@@ -179,7 +195,9 @@ $('.ui-layout-pane-toolbar-toggler').click(function() {
 //      (.ui-layout-pane-toolbar-close) instead of id selector
 //      (#ui-layout-pane-toolbar-close), which doesn't exist
 $('.ui-layout-pane-toolbar-close').click(function() {
-    panePosition = $(this).parents('.ui-layout-pane').attr('pane');
+    var $me = $(this);
+    
+    panePosition = $('#' + $me.parent().data('panel')).attr('pane');
 
     if(panePosition && panePosition.length) {
         didgeridoo.ui.layout.hide(panePosition);
