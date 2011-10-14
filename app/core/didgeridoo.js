@@ -88,9 +88,23 @@ var didgeridoo = (function () {
 		loadModule('ui/jqueryui', '');
 		loadModule('ui/layout', 'body', function() {
 			loadModule('ui/main-menu', '#ui-layout-north');
-			loadModule('ui/tools', '#ui-layout-west');
 			loadModule('ui/kendoui', 'body', function() {
-				loadModule('ui/project-explorer', '#ui-layout-west');
+				loadModule('ui/tools', '#ui-layout-west > .container', function() {
+					loadModule('ui/project-explorer', '#ui-layout-west .container', function() {
+						$('#ui-layout-west .container').append('<div></div>').kendoSplitter({
+							orientation: 'vertical',
+							panes: [{
+								size: '200px'
+							},
+							{
+								size: '200px'
+							},
+							{
+								size: '50px'
+							}]
+						});
+					});
+				});
 			});
 			loadModule('ui/visual-editor', '#ui-layout-center');
 			loadModule('ui/ace', '#didgeridoo-code-editor');

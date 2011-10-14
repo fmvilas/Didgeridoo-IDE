@@ -1,7 +1,17 @@
-## Didgeridoo IDE
+<h1>Didgeridoo IDE</h1>
+
+<h2>Description<h2>
 
 Didgeridoo is intended to be an only-standards web-based IDE.
 
 Author:	Francisco Méndez Vilas 
 		fmvilas@gmail.com
 		@fmvilas
+		
+
+<h2>Known Bugs:</h2>
+
+<ol>
+	<li>The toolbar of south panel doesn't appear in a strange scenario (Unpin the south panel, Open again without pining and then pin it). After this south panel (#ui-layout-south) is not receiving MouseEnter event, nor jQuery hover event binding.
+	</li>
+</ol>

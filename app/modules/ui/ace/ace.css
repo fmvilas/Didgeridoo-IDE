@@ -1,9 +1,8 @@
 #didgeridoo-code-editor {
 	position: absolute;
-	left: 0; top: 35px;
+	left: 0; top: 36px;
 	right: 0; bottom: 0;
 	background-color: #1C140D;
-	border-top: #CBE86B 1px dotted;
 }
 
 #didgeridoo-code-editor-ace { 

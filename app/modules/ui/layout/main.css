@@ -30,12 +30,9 @@
  */
 .ui-layout-pane { /* all 'panes' */
 	border:		none;
-	/* DO NOT add scrolling (or padding) to 'panes' that have a content-div,
-	   otherwise you may get double-scrollbars - on the pane AND on the content-div
-	*/
 	padding:	0;
 	overflow:	auto;
-	}
+}
 	
 /* (scrolling) content-div inside pane allows for fixed header(s) and/or footer(s) */
 .ui-layout-content {
@@ -93,10 +90,20 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
  *	TOGGLER-BUTTONS
  */
 .ui-layout-toggler {
-    display:none !important;
+    top: 10px !important;
+    width: 16px !important;
+    height: 17px !important;
+    background: url(../_images/ui-icons_ffffff_256x240.png) -144px -144px no-repeat;
 }
-	
-	
+.ui-layout-toggler-open {
+	display: none !important;
+}
+.ui-layout-toggler-south-closed {
+	top: 0 !important;
+}	
+.ui-layout-resizer-closed {
+	background-color: #1C140D;
+}
 	
 	
 	
@@ -118,6 +125,7 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
     background: none;
     background-color:#1C140D;
     border:none;
+    border-bottom: #3E362F 1px solid;
     padding:0 3px 0 0;
     -moz-box-shadow:#000 0 0 5px !important;
     box-shadow:#000 0 0 5px !important;
@@ -284,8 +292,4 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
 
 .ui-layout-pane-toolbar-toggler {
     background-position: -128px -144px;
-}
-
-.ui-layout-pane-toolbar-toggler-pin {
-    background-position: -144px -144px !important;
 }

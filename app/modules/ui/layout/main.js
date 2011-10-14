@@ -10,7 +10,9 @@ didgeridoo.ui.layout = $('body').layout({
     ,
     spacing_closed:                 3      // spacing between panels, when closed
     ,
-    slideTrigger_open:        'mouseover'   // slide de panels on mouseover, instead of click by default
+    sliderTip:				''
+    ,
+    togglerTip_closed:		'Pin panel'
     ,
     north__slidable:		false	// north panel cannot be slidable
     ,
@@ -26,11 +28,17 @@ didgeridoo.ui.layout = $('body').layout({
     ,
     south__minSize:			10      // south panel minimal height (px)
     ,
+    south__spacing_closed:	17
+    ,
     west__minSize:			200     // west panel minimal width (px)
+    ,
+    west__spacing_closed:	16
     ,
     east__minSize:			200     // east panel minimal width (px)
     ,
     east__maxSize:			Math.floor(screen.availWidth / 2 - 50) // east panel maximum width is 1/2 screen width - 50px
+    ,
+    east__spacing_closed:	16
     ,
     west__maxSize:			Math.floor(screen.availWidth / 2 - 50) // west panel maximum width is 1/2 screen width - 50px
     ,
@@ -39,28 +47,27 @@ didgeridoo.ui.layout = $('body').layout({
     //
     //Events
     //
-    onclose_end: function(paneName, thePane) {
-        var $thePane = $(thePane),
-        	$toolbar = $('#' + $thePane.attr('id') + '-toolbar'),
-        	$btn = $('.ui-layout-pane-toolbar-toggler', $toolbar);
-        	
-        $btn.addClass('ui-layout-pane-toolbar-toggler-pin');
-        $btn.attr('title', 'Pin panel');
-        $toolbar.stop().fadeOut();
+    onclose_start: function(paneName, thePane) {
+    	var $thePane = $(thePane),
+    		$toolbar = $('#' + $thePane.attr('id') + '-toolbar');
+    	
+    	$toolbar.css('display', 'none');
     },
-    onopen_end: function(paneName, thePane) {
-        var $thePane = $(thePane),
-        	$toolbar = $('#' + $thePane.attr('id') + '-toolbar'),
-	        	$btn = $('.ui-layout-pane-toolbar-toggler', $toolbar);
-	        	
-        $btn.removeClass('ui-layout-pane-toolbar-toggler-pin');
-        $btn.attr('title', 'Unpin panel');
-        placeToolbar(paneName, thePane);
+    onopen_end: function(paneName, thePane, state) {
+    	if(!state.isSliding) {
+        	var $thePane = $(thePane),
+        		$toolbar = $('#' + $thePane.attr('id') + '-toolbar');
+        
+	        placeToolbar(paneName, thePane);
+	        $toolbar.css('display', 'block');
+	    }
     },
     onresize: function(paneName, thePane) {
     	placeToolbar(paneName, thePane);
+    	$(window).trigger('resize');
     }
 });
+
 
 var placeToolbar = function(paneName, thePane) {
 	var $thePane = $(thePane);
@@ -82,99 +89,113 @@ var placeToolbar = function(paneName, thePane) {
 
 
 $('#ui-layout-west').hover(function() {
-	var $pane = $(this),
-		$toolbar = $('#ui-layout-west-toolbar');
-		
-	$toolbar.css('left', $pane.position().left + $pane.width() + 3);
-	$toolbar.stop().fadeIn();
+	if(!didgeridoo.ui.layout.state.west.isSliding) {
+		var $pane = $(this),
+			$toolbar = $('#ui-layout-west-toolbar');
+			
+		$toolbar.stop().css({
+			'left': $pane.position().left + $pane.width() + 3,
+			'display': 'block'
+		});
+	}
 	
 }, function() {
-	var $toolbar = $('#ui-layout-west-toolbar');
-	
-	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
-	});
+	if(!didgeridoo.ui.layout.state.west.isSliding) {
+		var $toolbar = $('#ui-layout-west-toolbar');
+		
+		$toolbar.animate({display:'block'}, 1500, function() {
+			$toolbar.css('display', 'none');
+		});
+	}
 });
 
 
 $('#ui-layout-west-toolbar').hover(function() {
 	var $toolbar = $(this);
 	
-	$toolbar.stop();
-	
+	$toolbar.stop().css('display', 'block');	
 }, function() {
 	var $toolbar = $(this);
 	
 	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
+		$toolbar.css('display', 'none');
 	});
 });
 
 
 $('#ui-layout-east').hover(function() {
-	var $pane = $(this),
-		$toolbar = $('#ui-layout-east-toolbar');
-		
-	$toolbar.css('left', $pane.position().left - $toolbar.width() - 10);
-	$toolbar.stop().fadeIn();
+	if(!didgeridoo.ui.layout.state.east.isSliding) {
+		var $pane = $(this),
+			$toolbar = $('#ui-layout-east-toolbar');
+			
+		$toolbar.stop().css({
+			'left': $pane.position().left - $toolbar.width() - 10,
+			'display': 'block'
+		});
+	}
 	
 }, function() {
-	var $toolbar = $('#ui-layout-east-toolbar');
-	
-	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
-	});
+	if(!didgeridoo.ui.layout.state.east.isSliding) {
+		var $toolbar = $('#ui-layout-east-toolbar');
+		
+		$toolbar.animate({display:'block'}, 1500, function() {
+			$toolbar.css('display', 'none');
+		});
+	}
 });
 
 
 $('#ui-layout-east-toolbar').hover(function() {
 	var $toolbar = $(this);
 	
-	$toolbar.stop();
+	$toolbar.stop().css('display', 'block');
 	
 }, function() {
 	var $toolbar = $(this);
 	
 	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
+		$toolbar.css('display', 'none');
 	});
 });
 
 
 $('#ui-layout-south').hover(function() {
-	var $pane = $(this),
-		$toolbar = $('#ui-layout-south-toolbar');
-		
-	$toolbar.css('top', $pane.position().top - $toolbar.height() - 21);
-	$toolbar.stop().fadeIn();
+	if(!didgeridoo.ui.layout.state.south.isSliding) {
+		var $pane = $(this),
+			$toolbar = $('#ui-layout-south-toolbar');
+			
+		$toolbar.stop().css({
+			'top': $pane.position().top - $toolbar.height() - 21,
+			'display': 'block'
+		});
+	}
 	
 }, function() {
-	var $toolbar = $('#ui-layout-south-toolbar');
-	
-	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
-	});
+	if(!didgeridoo.ui.layout.state.south.isSliding) {
+		var $toolbar = $('#ui-layout-south-toolbar');
+		
+		$toolbar.animate({display:'block'}, 1500, function() {
+			$toolbar.css('display', 'none');
+		});
+	}
 });
 
 
 $('#ui-layout-south-toolbar').hover(function() {
 	var $toolbar = $(this);
 	
-	$toolbar.stop();
+	$toolbar.stop().css('display', 'block');
 	
 }, function() {
 	var $toolbar = $(this);
 	
 	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.fadeOut();
+		$toolbar.css('display', 'none');
 	});
 });
 
 
-//Add funcionality to Pin/Unpin buttons
-//NOTE: it works for all Pin/Unpin buttons!!! note, the class selector
-//      (.ui-layout-pane-toolbar-toggler) instead of id selector
-//      (#ui-layout-pane-toolbar-toggler), which doesn't exist
+//Add funcionality to Unpin buttons
 $('.ui-layout-pane-toolbar-toggler').click(function() {
 	var $me = $(this);
 	
