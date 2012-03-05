@@ -20,6 +20,12 @@ html, body {
 
 .ui-layout-pane::-webkit-scrollbar {
     width: 7px;
+    height: 7px;
+    display: none;
+}
+
+.ui-layout-pane:hover::-webkit-scrollbar {
+	display: block;
 }
  
 .ui-layout-pane::-webkit-scrollbar-track {

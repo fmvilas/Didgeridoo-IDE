@@ -6,88 +6,130 @@
     didgeridoo.ui.visualEditor.iframe = $('#didgeridoo-visual-editor-iframe');
 
     didgeridoo.ui.visualEditor.interactor = $('#didgeridoo-visual-editor-interactor');
+    
+    didgeridoo.ui.visualEditor.interactorContainer = $('#didgeridoo-visual-editor-interactorContainer');
+    
+    didgeridoo.ui.visualEditor.nodeHandler = $('#didgeridoo-visual-editor-node-handler');
+    
+    didgeridoo.ui.visualEditor.parentNodeHandler = $('#didgeridoo-visual-editor-parent-node-handler');
+    												
+    didgeridoo.ui.visualEditor.resizerHandlers =	{
+    													nw: $('#didgeridoo-visual-editor-resizer-handler-nw'),
+    													ne: $('#didgeridoo-visual-editor-resizer-handler-ne'),
+    													sw: $('#didgeridoo-visual-editor-resizer-handler-sw'),
+    													se: $('#didgeridoo-visual-editor-resizer-handler-se')
+    												};
 
     didgeridoo.ui.visualEditor.selectedParent = null;
 
-    didgeridoo.ui.visualEditor.interactor.selectObjectFromPoint = function(e, hilight) {
+    didgeridoo.ui.visualEditor.selectObjectFromPoint = function(e) {
         var doc = didgeridoo.ui.visualEditor.iframe[0].contentDocument,
             body = doc.body,
-            deltaX = $('#didgeridoo-visual-editor-interactorContainer')[0].scrollLeft,
-            deltaY = $('#didgeridoo-visual-editor-interactorContainer')[0].scrollTop,
-            x = (e.offsetX || e.layerX) - deltaX,
-            y = (e.offsetY || e.layerY) - deltaY,
+            deltaX = didgeridoo.ui.visualEditor.interactorContainer[0].scrollLeft,
+            deltaY = didgeridoo.ui.visualEditor.interactorContainer[0].scrollTop,
+            x = (e.offsetX || e.layerX) + e.srcElement.offsetLeft + e.srcElement.parentElement.offsetLeft - e.srcElement.parentElement.scrollLeft - deltaX,
+            y = (e.offsetY || e.layerY) + e.srcElement.offsetTop + e.srcElement.parentElement.offsetTop - e.srcElement.parentElement.scrollTop - deltaY,
+            $el = $(doc.elementFromPoint(x-1, y-1)),
+            $pel = $el.parent(),
             result = null;
-            
-
-        hilight = hilight != false ? true : false;
-
-        if(hilight) {$("#hilightDiv", body).css('display', 'none');}
-
-        /**
-         * ¡¡¡¡¡¡REVISAR ESTO!!!!!!!
-         */
-        if( $el = $(doc.elementFromPoint(x-1, y-1)) ) {
-            if($el[0].tagName.toLowerCase() == 'body' || $el[0].tagName.toLowerCase() == 'html') {
-                result = body;
-            } else {
-                if(hilight) {
-                    var $parents = $el.parents(),
-                        i = 0,
-                        $pel = false;
-                    while($parents && i < $parents.length) {
-                        console.log($parents[i].tagName + ' - ' + $parents[i].className + ' - ' + $parents[i].scrollHeight + ' - ' + $($parents[i]).outerHeight() + ' - ' + $($parents[i]).css('overflow'));
-                        if(($parents[i].scrollHeight &&
-                           $parents[i].scrollHeight > $parents[i].clientHeight &&
-                           $($parents[i]).css('overflow') == 'auto') ||
-                           $parents[i].tagName.toLowerCase() == 'body') {
-                            $pel = $($parents[i]);
-                            break;
-                        } else {
-                            i++;
-                        }
-                    }
-
-                    console.log($pel);
-
-                    $("#didgeridoo-visual-editor-interactor").css({
-                        'left': $pel.offset().left,
-                        'top': $pel.offset().top,
-                        'width': '100%',
-                        'height': '100%',
-                        'display': 'block'
-                    });
-                    $("#didgeridoo-visual-editor-resizerContainer").css({
-                        'left': $pel.offset().left,
-                        'top': $pel.offset().top,
-                        'width': $pel[0].scrollWidth,
-                        'height': $pel[0].scrollHeight,
-                        'display': 'block'
-                    });
-                    $("#didgeridoo-visual-editor-resizer").css({
-                        'left': $el.offset().left,
-                        'top': $el.offset().top,
-                        'width': $el.outerWidth(),
-                        'height': $el.outerHeight()
-                    });
-
-                    $('#didgeridoo-visual-editor-interactor').bind('scroll', function(e) {
-                        $pel[0].scrollTop = this.scrollTop;
-                        console.log($pel[0].scrollTop);
-                    });
-                }
-
-                result = $el;
-            }
-
-            didgeridoo.ui.visualEditor.interactor.css('display','none');
-            didgeridoo.ui.visualEditor.interactor.height(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body.scrollHeight);
-            didgeridoo.ui.visualEditor.interactor.width(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body.scrollWidth);
-            didgeridoo.ui.visualEditor.interactor.css('display','block');
-        }
-
+		
+		console.log(e);
+		
+		if($el[0]) {
+	        	        
+	        didgeridoo.ui.visualEditor.resizerHandlers.nw.css('display', 'none');
+	        didgeridoo.ui.visualEditor.resizerHandlers.ne.css('display', 'none');
+	        didgeridoo.ui.visualEditor.resizerHandlers.sw.css('display', 'none');
+	        didgeridoo.ui.visualEditor.resizerHandlers.se.css('display', 'none');
+	        
+	        didgeridoo.ui.visualEditor.parentNodeHandler.css('overflow', 'hidden');
+	        if($pel[0] instanceof HTMLHtmlElement || $pel[0] == doc) {
+				didgeridoo.ui.visualEditor.parentNodeHandler.css({
+				    'left': $el[0].offsetLeft + parseInt($el.css('margin-left')),
+				    'top': $el[0].offsetTop + parseInt($el.css('margin-top')),
+				    'width': $el.outerWidth(),
+				    'height': $el.outerHeight(),
+				    'overflow': $el.css('overflow')
+				});
+				
+				console.log($el.outerWidth());
+				didgeridoo.ui.visualEditor.nodeHandler.css({
+				    'left': $el[0].offsetLeft,
+				    'top': $el[0].offsetTop,
+				    'width': $el.outerWidth(),
+				    'height': $el.outerHeight()
+				});
+			} else {
+				var obj = $pel[0], ol = 0, ot = 0;
+				console.log($el);
+				do {
+					ol += obj.offsetLeft;
+					ot += obj.offsetTop;
+				} while(obj = obj.offsetParent);
+				didgeridoo.ui.visualEditor.parentNodeHandler.css({
+				    'left': ol,
+				    'top': ot,
+				    'width': $pel.outerWidth(),
+				    'height': $pel.outerHeight(),
+				    'overflow': $pel.css('overflow')
+				});
+							
+				didgeridoo.ui.visualEditor.nodeHandler.css({
+				    'left': $el[0].offsetLeft + parseInt($el.css('margin-left')) - $pel[0].offsetLeft,
+				    'top': $el[0].offsetTop + parseInt($el.css('margin-top')) - $pel[0].offsetTop,
+				    'width': $el.outerWidth(),
+				    'height': $el.outerHeight()
+				});
+				
+				if(!($el[0] instanceof HTMLBodyElement)) {
+					/*didgeridoo.ui.visualEditor.nodeHandler.resizable({
+						handlers: {
+							nw: didgeridoo.ui.visualEditor.resizerHandlers.nw,
+							ne: didgeridoo.ui.visualEditor.resizerHandlers.ne,
+							sw: didgeridoo.ui.visualEditor.resizerHandlers.sw,
+							se: didgeridoo.ui.visualEditor.resizerHandlers.se
+						}
+					});*/
+					console.dir($.fn);
+					$('.didgeridoo-visual-editor-resizer-handler').css('display', 'block').draggable({
+						drag: function(e) {
+							
+						},
+						stop: function(e) {
+							var _self = $(this),
+								_p = {
+										left: parseInt(_self.css('left')),
+										top: parseInt(_self.css('top'))
+									}
+							
+							if(_p.left < 0) { _self.css('left', 0); }
+							if(_p.top < 0) { _self.css('top', 0); }
+							
+							console.log(didgeridoo.ui.visualEditor.resizerHandlers.se[0].offsetLeft);
+						}
+					});
+				}
+			}
+	
+	        result = $el;
+	
+	        didgeridoo.ui.visualEditor.interactor.height(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body.scrollHeight);
+	        didgeridoo.ui.visualEditor.interactor.width(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body.scrollWidth);
+	        
+		}
+		
+		didgeridoo.ui.visualEditor.selectedParent = $pel;
         didgeridoo.ui.visualEditor.selectedObject = result;
+        
+        console.log('Selected element: ', result);
+        
         return result;
     };
+    
+    didgeridoo.ui.visualEditor.parentNodeHandler.scroll(function(e) {
+    	didgeridoo.ui.visualEditor.selectedParent[0].scrollTop = this.scrollTop;
+    	didgeridoo.ui.visualEditor.selectedParent[0].scrollLeft = this.scrollLeft;
+    });
 
     didgeridoo.ui.visualEditor.iframe.wrapTextBlobs = function() {
         body = didgeridoo.ui.visualEditor.iframe[0].contentDocument.body;
@@ -104,7 +146,7 @@
         drop: function( event, ui ) {
             var body = didgeridoo.ui.visualEditor.iframe[0].contentDocument.body,
                 path = didgeridoo.toolsPath + $(ui.draggable).data('toolPath'),
-                containerEl = didgeridoo.ui.visualEditor.interactor.selectObjectFromPoint(event);
+                containerEl = didgeridoo.ui.visualEditor.selectObjectFromPoint(event);
 
             $.ajax(path, {
                 cache: false, //TIP: Do we have to cache or not? :/ Maybe a config option for didgeridoo?
@@ -115,23 +157,19 @@
         }
     });
 
-    $("#didgeridoo-visual-editor-resizerContainer, #didgeridoo-visual-editor-resizer").mousedown(function(e) {
-        $("#didgeridoo-visual-editor-resizerContainer").css('display', 'none');
-    });
-
-    didgeridoo.ui.visualEditor.interactor.mouseup(function(e) {
-        didgeridoo.ui.visualEditor.interactor.selectObjectFromPoint(e);
+    didgeridoo.ui.visualEditor.interactor.click(function(e) {
+        didgeridoo.ui.visualEditor.selectObjectFromPoint(e);
     });
 
     didgeridoo.ui.visualEditor.interactor.mousemove(function(e) {
         if(didgeridoo.ui.visualEditor.isDragging == true) {
-            didgeridoo.ui.visualEditor.interactor.selectObjectFromPoint(e);
+            didgeridoo.ui.visualEditor.selectObjectFromPoint(e);
         }
     });
 
-    /*$('#didgeridoo-visual-editor-interactor').scroll(function(e) {
+    didgeridoo.ui.visualEditor.interactorContainer.scroll(function(e) {
         didgeridoo.ui.visualEditor.iframe[0].contentWindow.scroll(this.scrollLeft, this.scrollTop);
-    });*/
+    });
 
     didgeridoo.ui.visualEditor.iframe.load(function() {
         didgeridoo.ui.visualEditor.iframe.wrapTextBlobs();
@@ -141,4 +179,5 @@
         didgeridoo.ui.visualEditor.interactor.width(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body.scrollWidth);
         //$('#didgeridoo-visual-editor-interactorContainer').css('display', 'none');
     });
+	
 })();

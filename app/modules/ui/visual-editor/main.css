@@ -37,21 +37,59 @@
     -webkit-user-select:none;
     -webkit-user-drag:none;
     user-select:none;
-    overflow: auto;
-    /*background-color: rgba(255,255,0,.6);*/
+    overflow: hidden;
 }
 
-#didgeridoo-visual-editor-resizerContainer {
+#didgeridoo-visual-editor-parent-node-handler {
     position: absolute;
-    display:none;
-    /*background-color: rgba(255,0,200,.6);*/
+    left: 0; top: 0;
+    width: 0; height: 0;
+    overflow: auto;
 }
 
-#didgeridoo-visual-editor-resizer {
-    position:absolute;
-    background-color: rgba(255,255,200,.6);
-    /*border: rgba(255,0,200,.6) 2px solid;*/
+
+#didgeridoo-visual-editor-parent-node-handler::-webkit-scrollbar-track,
+#didgeridoo-visual-editor-parent-node-handler::-webkit-scrollbar-thumb,
+#didgeridoo-visual-editor-parent-node-handler::-webkit-scrollbar-thumb:window-inactive {
+    display: none;
 }
+
+#didgeridoo-visual-editor-node-handler {
+    position:absolute;
+    border: rgba(127,127,127,.5) 1px dotted;
+}
+
+#didgeridoo-visual-editor-resizer-handler-nw,
+#didgeridoo-visual-editor-resizer-handler-ne,
+#didgeridoo-visual-editor-resizer-handler-sw,
+#didgeridoo-visual-editor-resizer-handler-se {
+    position: absolute;
+    width:6px;
+    height:6px;
+    background-color: #fff;
+    border:1px solid #333;
+}
+
+#didgeridoo-visual-editor-resizer-handler-nw {
+	left: 0; top: 0;
+	cursor: nwse-resize;
+}
+
+#didgeridoo-visual-editor-resizer-handler-ne {
+	right: 0; top: 0;
+	cursor: nesw-resize;
+}
+
+#didgeridoo-visual-editor-resizer-handler-sw {
+	left: 0; bottom: 0;
+	cursor: nesw-resize;
+}
+
+#didgeridoo-visual-editor-resizer-handler-se {
+	right: 0; bottom: 0;
+	cursor: nwse-resize;
+}
+
 
 #didgeridoo-visual-editor-iframe {
     position:absolute;
@@ -59,25 +97,4 @@
     height:100%;
     border:none;
     z-index: 1;
-}
-
-#didgeridoo-resizer {
-    position:absolute;
-    border: #ff0084 1px dotted;
-    display:none;
-}
-
-#didgeridoo-resize-handler-nw,
-#didgeridoo-resize-handler-n,
-#didgeridoo-resize-handler-ne,
-#didgeridoo-resize-handler-w,
-#didgeridoo-resize-handler-e,
-#didgeridoo-resize-handler-sw,
-#didgeridoo-resize-handler-s,
-#didgeridoo-resize-handler-se {
-    position: absolute;
-    width:5px;
-    height:5px;
-    background-color: #fff;
-    border:1px solid #333;
 }
