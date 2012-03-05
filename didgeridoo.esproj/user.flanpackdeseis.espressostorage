@@ -23,12 +23,12 @@
 		<array>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/core</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/init</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/jquery</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/layout</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/_css</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/ace</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/main-menu</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/project-explorer</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/tools</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/templates/default</string>
 		</array>
@@ -72,12 +72,6 @@
 			<dict>
 				<key>DocumentURL</key>
 				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/_css/common.css</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui/kendo.css</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
@@ -132,6 +126,24 @@
 			<dict>
 				<key>DocumentURL</key>
 				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/bugs.txt</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui/deps.json</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/tools/main.css</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/main-menu/main.css</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>

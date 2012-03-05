@@ -80,10 +80,6 @@ var placeToolbar = function(paneName, thePane) {
 			var $toolbar = $('#ui-layout-east-toolbar');
 			$toolbar.css('left', $thePane.position().left - $toolbar.width() - 10);
 		break;
-		case 'south':
-			var $toolbar = $('#ui-layout-east-toolbar');
-			$toolbar.css('top', $pane.position().top - $toolbar.height() - 21);
-		break;
 	}
 };
 
@@ -159,42 +155,6 @@ $('#ui-layout-east-toolbar').hover(function() {
 });
 
 
-$('#ui-layout-south').hover(function() {
-	if(!didgeridoo.ui.layout.state.south.isSliding) {
-		var $pane = $(this),
-			$toolbar = $('#ui-layout-south-toolbar');
-			
-		$toolbar.stop().css({
-			'top': $pane.position().top - $toolbar.height() - 21,
-			'display': 'block'
-		});
-	}
-	
-}, function() {
-	if(!didgeridoo.ui.layout.state.south.isSliding) {
-		var $toolbar = $('#ui-layout-south-toolbar');
-		
-		$toolbar.animate({display:'block'}, 1500, function() {
-			$toolbar.css('display', 'none');
-		});
-	}
-});
-
-
-$('#ui-layout-south-toolbar').hover(function() {
-	var $toolbar = $(this);
-	
-	$toolbar.stop().css('display', 'block');
-	
-}, function() {
-	var $toolbar = $(this);
-	
-	$toolbar.animate({display:'block'}, 1500, function() {
-		$toolbar.css('display', 'none');
-	});
-});
-
-
 //Add funcionality to Unpin buttons
 $('.ui-layout-pane-toolbar-toggler').click(function() {
 	var $me = $(this);
@@ -224,8 +184,3 @@ $('.ui-layout-pane-toolbar-close').click(function() {
         didgeridoo.ui.layout.hide(panePosition);
     }
 });
-
-//Creates the south panel tabs
-$('#didgeridoo-layout-south-tabs').tabs();
-//Makes the tabs sortable
-$('#didgeridoo-layout-south-tabs > ul').sortable({ axis: "x" });

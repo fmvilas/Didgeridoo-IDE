@@ -45,7 +45,7 @@
  *	RESIZER-BARS
  */
 .ui-layout-resizer	{ /* all 'resizer-bars' */
-	background-color: #CBE86B;
+	background-color: #e4e3e5;
     border: none;
     opacity:1 !important;
     filter:  alpha(opacity=100) !important;
@@ -82,7 +82,6 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
 /* sliding resizer - add 'outside-border' to resizer on-hover 
  * this sample illustrates how to target specific panes and states */
 .ui-layout-resizer-north-sliding-hover	{ border-bottom-width:	1px; }
-.ui-layout-resizer-south-sliding-hover	{ border-top-width:		1px; }
 .ui-layout-resizer-west-sliding-hover	{ border-left-width:	1px; }
 .ui-layout-resizer-east-sliding-hover	{ border-right-width:	1px; }
 
@@ -97,9 +96,6 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
 }
 .ui-layout-toggler-open {
 	display: none !important;
-}
-.ui-layout-toggler-south-closed {
-	top: 0 !important;
 }	
 .ui-layout-resizer-closed {
 	background-color: #1C140D;
@@ -109,72 +105,14 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
 	
 
 #ui-layout-north {
+	background: -webkit-linear-gradient(top, #3E362F, #1C140D);
+	background: -moz-linear-gradient(top, #3E362F, #1C140D);
+	background: -ms-linear-gradient(top, #3E362F, #1C140D);
+	background: -o-linear-gradient(top, #3E362F, #1C140D);
+	background: linear-gradient(top, #3E362F, #1C140D);
 	border-bottom: rgba(235, 255, 15, .6) 2px solid;
 	box-shadow: #000 0 0 5px;
 	overflow: visible;
-}
-#didgeridoo-layout-south-tabs {
-    position:absolute;
-    left:0; top:0;
-    right:0px;bottom:0;
-    padding: 0;
-    border: none;
-}
-
-#didgeridoo-layout-south-tabs > .ui-widget-header {
-    background: none;
-    background-color:#1C140D;
-    border:none;
-    border-bottom: #3E362F 1px solid;
-    padding:0 3px 0 0;
-    -moz-box-shadow:#000 0 0 5px !important;
-    box-shadow:#000 0 0 5px !important;
-}
-
-#didgeridoo-layout-south-tabs > .ui-widget-header > li {
-    padding: 0;
-    border: none;
-    top: 0;
-    margin: 0 7px 0 0;
-	border-right: #3E362F 1px solid;
-	border-left: #3E362F 1px solid;
-    background: -webkit-linear-gradient(top, #3E362F, #1C140D);
-    background: -moz-linear-gradient(top, #3E362F, #1C140D);
-    background: -ms-linear-gradient(top, #3E362F, #1C140D);
-    background: -o-linear-gradient(top, #3E362F, #1C140D);
-    background: linear-gradient(top, #3E362F, #1C140D);
-}
-
-#didgeridoo-layout-south-tabs > ul > li > a {
-    display: block;
-    cursor: default;
-    font-family: Lucida Grande, Geneva, Arial, Verdana;
-    font-size: 12px;
-    font-weight: normal;
-    color: #F2E9E1;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-#didgeridoo-layout-south-tabs > ul > li:hover {
-	background: -webkit-linear-gradient(top, #5F584F, #1C140D);
-	background: -moz-linear-gradient(top, #5F584F, #1C140D);
-	background: -ms-linear-gradient(top, #5F584F, #1C140D);
-	background: -o-linear-gradient(top, #5F584F, #1C140D);
-	background: linear-gradient(top, #5F584F, #1C140D);
-}
-
-.didgeridoo-layout-south-tab-close {
-    display: block;
-    width:16px;
-    height:17px;
-    background-image: url(../_images/ui-icons_F2E9E1_256x240.png);
-    background-repeat: no-repeat;
-    background-position: -80px -128px;
-    margin: 9px 5px 0 2px;
-    padding: 0 !important;
-    cursor:pointer !important;
-
 }
 
 #ui-layout-west-toolbar {
@@ -244,47 +182,6 @@ otherwise color shifts while dragging when bar can't keep up with mouse */
 }
 
 
-#ui-layout-south-toolbar {
-	display: none;
-	position: absolute;
-	background: -webkit-linear-gradient(top, #3E362F, #1C140D);
-	background: -moz-linear-gradient(top, #3E362F, #1C140D);
-	background: -ms-linear-gradient(top, #3E362F, #1C140D);
-	background: -o-linear-gradient(top, #3E362F, #1C140D);
-	background: linear-gradient(top, #3E362F, #1C140D);
-    width: 65px;
-    height: 18px;
-    border: #3E362F 2px solid;
-    border-bottom: none;
-    left: 50%;
-    margin-left: -42px;
-    padding: 8px 10px;
-    z-index: 3 !important;
-    border-radius: 8px 8px 0 0;
-    -moz-border-radius: 8px 8px 0 0;
-}
-
-#ui-layout-south-toolbar a {
-    display: inline-block;
-    width:16px;
-    height:17px;
-    background-image: url(../_images/ui-icons_ffffff_256x240.png);
-    background-repeat: no-repeat;
-    margin: 0 7px;
-    cursor:pointer;
-}
-
-#ui-layout-south-toolbar a:hover {
-    background-image: url(../_images/ui-icons_CBE86B_256x240.png);
-}
-
-
-
-.ui-layout-pane-south .ui-layout-pane-toolbar {
-    width: 20px;
-    height: 100%;
-    float: right;
-}
 
 .ui-layout-pane-toolbar-close {
     background-position: -32px -192px;

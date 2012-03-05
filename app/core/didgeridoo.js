@@ -90,24 +90,10 @@ var didgeridoo = (function () {
 			loadModule('ui/main-menu', '#ui-layout-north');
 			loadModule('ui/kendoui', 'body', function() {
 				loadModule('ui/tools', '#ui-layout-west > .container', function() {
-					loadModule('ui/project-explorer', '#ui-layout-west .container', function() {
-						$('#ui-layout-west .container').append('<div></div>').kendoSplitter({
-							orientation: 'vertical',
-							panes: [{
-								size: '200px'
-							},
-							{
-								size: '200px'
-							},
-							{
-								size: '50px'
-							}]
-						});
-					});
+					loadModule('ui/project-explorer', '#ui-layout-west .container');
 				});
 			});
 			loadModule('ui/visual-editor', '#ui-layout-center');
-			loadModule('ui/ace', '#didgeridoo-code-editor');
 		});
 	};
 	
@@ -131,7 +117,10 @@ var didgeridoo = (function () {
 				
 				//Load the CSS...
 				if(deps.css) {
-					$('head').append('<link rel="stylesheet" type="text/css" href="' + _.APP_DIR + '/' + _.MODULES_DIR + '/' + module + '/' + deps.css + '" />');
+					if(typeof deps.css != 'object') { deps.css = [deps.css]; } //If dep.css is not an array, let's make it
+					for(var i=0;i<deps.css.length;i++) {
+						$('head').append('<link rel="stylesheet" type="text/css" href="' + _.APP_DIR + '/' + _.MODULES_DIR + '/' + module + '/' + deps.css[i] + '" />');
+					}
 				}
 				//...and load the HTML...
 				if(deps.html) {

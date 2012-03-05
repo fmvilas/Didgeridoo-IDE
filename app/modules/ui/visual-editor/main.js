@@ -12,13 +12,6 @@
     didgeridoo.ui.visualEditor.nodeHandler = $('#didgeridoo-visual-editor-node-handler');
     
     didgeridoo.ui.visualEditor.parentNodeHandler = $('#didgeridoo-visual-editor-parent-node-handler');
-    												
-    didgeridoo.ui.visualEditor.resizerHandlers =	{
-    													nw: $('#didgeridoo-visual-editor-resizer-handler-nw'),
-    													ne: $('#didgeridoo-visual-editor-resizer-handler-ne'),
-    													sw: $('#didgeridoo-visual-editor-resizer-handler-sw'),
-    													se: $('#didgeridoo-visual-editor-resizer-handler-se')
-    												};
 
     didgeridoo.ui.visualEditor.selectedParent = null;
 
@@ -36,11 +29,6 @@
 		console.log(e);
 		
 		if($el[0]) {
-	        	        
-	        didgeridoo.ui.visualEditor.resizerHandlers.nw.css('display', 'none');
-	        didgeridoo.ui.visualEditor.resizerHandlers.ne.css('display', 'none');
-	        didgeridoo.ui.visualEditor.resizerHandlers.sw.css('display', 'none');
-	        didgeridoo.ui.visualEditor.resizerHandlers.se.css('display', 'none');
 	        
 	        didgeridoo.ui.visualEditor.parentNodeHandler.css('overflow', 'hidden');
 	        if($pel[0] instanceof HTMLHtmlElement || $pel[0] == doc) {
@@ -82,14 +70,6 @@
 				});
 				
 				if(!($el[0] instanceof HTMLBodyElement)) {
-					/*didgeridoo.ui.visualEditor.nodeHandler.resizable({
-						handlers: {
-							nw: didgeridoo.ui.visualEditor.resizerHandlers.nw,
-							ne: didgeridoo.ui.visualEditor.resizerHandlers.ne,
-							sw: didgeridoo.ui.visualEditor.resizerHandlers.sw,
-							se: didgeridoo.ui.visualEditor.resizerHandlers.se
-						}
-					});*/
 					console.dir($.fn);
 					$('.didgeridoo-visual-editor-resizer-handler').css('display', 'block').draggable({
 						drag: function(e) {

@@ -10,18 +10,18 @@
 }
 
 #didgeridoo-tools .ui-accordion-header {
-	background: #1C140D;
+	background: none;
 	border: none;
-	border-bottom: #333 2px solid;
+	border-bottom: #e4e3e5 2px solid;
 }
 
 #didgeridoo-tools .ui-accordion-header a {
-	color: #F2E9E1;
+	color: #1C140D;
 	font-size: 12px;
 }
 
 #didgeridoo-tools .ui-accordion-header .ui-icon {
-	background-image: url(../_images/ui-icons_F2E9E1_256x240.png);
+	background-image: url(../_images/ui-icons_000000_256x240.png);
 }
 
 #didgeridoo-tools .ui-accordion-content {
