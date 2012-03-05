@@ -1,4 +1,4 @@
 {
-	"css": "kendo.css",
+	"css": ["kendo.common.min.css", "kendo.blueopal.min.css"],
 	"js": "kendo.all.min"
 }
