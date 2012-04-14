@@ -1,24 +1,47 @@
-require.config({
-    baseUrl: 'app',
-    paths: {
-    	//RequireJS plugins
-    	text: 'libraries/require/plugins/text',
-    	"order": 'libraries/require/plugins/order',
-    	//Didgeridoo modules and libraries
-    	didgeridoo: 'core/didgeridoo',
-        /*jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min',*/
-        jquery: 'libraries/jquery/jquery.min',
-        jwerty: 'libraries/jwerty/jwerty',
-        layout: 'libraries/layout/jquery.layout.min-1.2.0',
-        sugar: 'libraries/sugar/sugar'
-    },
-    priority: ['jquery']
-});
+(function() {
 
-require([
-'layout',
-'jwerty',
-'didgeridoo'
-], function() {
-	didgeridoo.start();
-});
+	require.config({
+	    baseUrl: 'app',
+	    paths: {
+	    	//RequireJS plugins
+	    	text: 'libraries/require/plugins/text',
+	    	"order": 'libraries/require/plugins/order',
+	    	//Didgeridoo modules and libraries
+	    	didgeridoo: 'core/didgeridoo',
+	        jquery: 'libraries/jquery/jquery.min'
+	    },
+	    priority: ['jquery']
+	});
+	
+	require([
+	'didgeridoo'
+	], function() {
+		d.libraries.load('jqueryui');
+		_buildUI();
+	});
+	
+	
+	
+	
+	/* _buildUI
+	 *
+	 * Constructs the Didgeridoo User Interface.
+	 */
+	var _buildUI = function() {
+		d.modules.load('ui/layout', 'body', function() {
+			d.modules.load('ui/main-menu', '#ui-layout-north');
+			d.modules.load('ui/properties', '#ui-layout-east .container');
+			d.modules.load('ui/kendoui', 'body', function() {
+				d.modules.load('ui/tools', '#ui-layout-west > .container', function() {
+					d.modules.load('ui/project-explorer', '#ui-layout-west .container');
+				});
+			});
+			d.modules.load('ui/visual-editor', '#ui-layout-center');
+		});
+		
+		$(window).bind('resize', function(evt) {
+			d.observer.publish('window.resize', evt);
+		});
+	};
+	
+})();

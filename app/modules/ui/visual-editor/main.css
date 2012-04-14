@@ -2,7 +2,8 @@
     position: absolute;
     display:block;
     left: 0px; top: 0px;
-    right: 0px; bottom: 0px;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
     box-shadow:#333 0 0 10px;
     color:#000;
@@ -40,7 +41,7 @@
     overflow: hidden;
 }
 
-#didgeridoo-visual-editor-parent-node-handler {
+/*#didgeridoo-visual-editor-parent-node-handler {
     position: absolute;
     left: 0; top: 0;
     width: 0; height: 0;
@@ -57,7 +58,7 @@
 #didgeridoo-visual-editor-node-handler {
     position:absolute;
     background-color: rgba(255,255,0,.2);
-}
+}*/
 
 #didgeridoo-visual-editor-iframe {
     position:absolute;

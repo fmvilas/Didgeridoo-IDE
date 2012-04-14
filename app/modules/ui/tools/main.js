@@ -1,5 +1,14 @@
 (function() {
     var stop = false;
+    
+    $('#didgeridoo-tools .didgeridoo-panel-window-header').click(function() {
+    	if($('#didgeridoo-tools').hasClass('didgeridoo-panel-window-collapsed')) {
+	    	$('#didgeridoo-tools').removeClass('didgeridoo-panel-window-collapsed');
+	    } else {
+	    	$('#didgeridoo-tools').addClass('didgeridoo-panel-window-collapsed');
+	    }
+    });
+    
     $( "#didgeridoo-tools h3" ).click(function( event ) {
         if ( stop ) {
             event.stopImmediatePropagation();
@@ -48,5 +57,5 @@
 
         return false;
     });
-
+	
 })();

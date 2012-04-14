@@ -1,12 +1,6 @@
 .didgeridoo-panel-window-tools-icon {
-    display:block;
     background-image: url(../_images/ui-icons_000000_256x240.png);
     background-position: -176px -112px;
-    width:16px;
-    height:17px;
-    margin: 0 10px;
-    float:left;
-    cursor: pointer;
 }
 
 #didgeridoo-tools .ui-accordion-header {

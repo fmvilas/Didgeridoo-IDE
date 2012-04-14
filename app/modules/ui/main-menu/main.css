@@ -1,5 +1,5 @@
 #didgeridoo-main-menu {
-	color: #F2E9E1;
+	color: #bbb;
     width:100%;
     height:32px;
     list-style: none;
@@ -26,9 +26,8 @@
     cursor: default;
 }
 
-#didgeridoo-main-menu li a:hover {
-    background-color: #F2E9E1;
-    color: #1C140D;
+#didgeridoo-main-menu > li a:hover {
+    color: #fff;
     border-bottom: none;
 }
 
@@ -37,8 +36,7 @@
  ********************************/
 
 #didgeridoo-main-menu li.hover > a {
-    background-color: #F2E9E1;
-    color: #1C140D;
+    color: #fff;
     border-bottom: none;
 }
 
@@ -51,7 +49,7 @@
     margin: 0;
     background-color: #1C140D;
     box-shadow:rgba(0,0,0,.4) 0 5px 10px;
-    border: rgba(203, 232, 107, .6) 1px solid;
+    border: #333 1px solid;
     list-style: none;
     padding-left: 0;
     -webkit-padding-start: 0;
@@ -59,8 +57,7 @@
 }
 
 #didgeridoo-main-menu > li ul li {
-    color: #F2E9E1;
-    background-color: #1C140D;
+    color: #bbb;
     min-height: 24px;
     font-family: Lucida Grande, Geneva, Arial, Verdana;
     font-size: 12px;
@@ -69,8 +66,8 @@
 }
 
 #didgeridoo-main-menu > li ul li:hover {
-    background-color: #F2E9E1;
-    color: #1C140D;
+	background-color: #005C83;
+    color: #bbb;
 }
 
 #didgeridoo-main-menu > li ul .didgeridoo-main-menu-separator,
@@ -96,11 +93,11 @@
     width:16px;
     height:17px;
     margin-top: 3px;
-    background: url(../_images/ui-icons_ebff0f_256x240.png) -32px -16px no-repeat;
+    background: url(../_images/ui-icons_bbbbbb_256x240.png) -32px -16px no-repeat;
 }
 
 #didgeridoo-main-menu > li ul li:hover .didgeridoo-main-menu-open-icon {
-    background-image: url(../_images/ui-icons_000000_256x240.png);
+    background-image: url(../_images/ui-icons_ffffff_256x240.png);
 }
 
 #didgeridoo-main-menu > li ul li .didgeridoo-main-menu-hotkey {

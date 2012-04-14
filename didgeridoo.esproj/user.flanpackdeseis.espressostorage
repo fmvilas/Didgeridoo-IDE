@@ -23,13 +23,8 @@
 		<array>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/core</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/init</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/jqueryui</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/main-menu</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/project-explorer</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/tools</string>
-			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/templates/default</string>
 		</array>
 	</dict>
@@ -41,13 +36,7 @@
 		<array>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout/main.js</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/layout/jquery.layout.min-1.2.0.js</string>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout/main.html</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
@@ -59,7 +48,7 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/README</string>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/_css/common.css</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
@@ -71,37 +60,43 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/_css/common.css</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout/main.html</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/ace/ace.css</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/ace/init.js</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
 				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/init/init.js</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout/deps.json</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout/main.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
 				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor/main.html</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/init/libraries.list.json</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/jqueryui/jquery-ui.css</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/tools/main.js</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
@@ -114,36 +109,6 @@
 			<dict>
 				<key>DocumentURL</key>
 				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor/main.css</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/templates/default/blank.html</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/bugs.txt</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui/deps.json</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/tools/main.css</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/main-menu/main.css</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>

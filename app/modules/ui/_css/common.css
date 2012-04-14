@@ -1,52 +1,59 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 html, body {
-	min-width: 1000px !important;
-	min-height: 600px !important;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 	overflow: auto !important;
+	color: #000;
+	font-family: 'Lucida Grande', Geneva, Verdana, Arial;
+	font-size: 12px;
 }
 
-.ui-layout-pane {
-	background: #F1F0F2;
-	border: 0 !important;
-}
-
-.ui-layout-pane > .container {
+.ui-layout-aside > .container {
 	height: auto;
 }
 
 .didgeridoo-panel-window {
-	min-height: 144px;
-	overflow: hidden !important;
+	overflow: auto;
 }
 
-.ui-layout-pane::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+.didgeridoo-panel-window-collapsed {
+	overflow: hidden;
+	height: 30px;
+}
+
+.light-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
     display: none;
 }
 
-.ui-layout-pane:hover::-webkit-scrollbar {
+.light-scrollbar:hover::-webkit-scrollbar {
 	display: block;
 }
  
-.ui-layout-pane::-webkit-scrollbar-track {
-    -webkit-border-radius: 3px;
-    background: #1C140D;
+.light-scrollbar::-webkit-scrollbar-track {
+    background: #E4E3E5;
 }
  
-.ui-layout-pane::-webkit-scrollbar-thumb {
+.light-scrollbar::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     background: #777; 
 }
-.ui-layout-pane::-webkit-scrollbar-thumb:window-inactive {
+.light-scrollbar::-webkit-scrollbar-thumb:window-inactive {
 	background: #333; 
 }
 
 .didgeridoo-panel-window-header {
 	background-color: #d8d7d9;
 	color: #1C140D;
-	height: 24px;
-	padding: 15px 0 4px 0;
-	margin: 0;
+	height: 20px;
+	margin: 10px 4px 5px 4px;
 	font-family: Lucida Grande, Geneva, Verdana, Arial;
 	font-size: 13px;
 	font-weight: normal;
@@ -56,23 +63,43 @@ html, body {
 	position: relative;
 	overflow: hidden;
 	z-index: 2;
+	border-radius: 10px;
+	text-overflow: ellipsis;
 }
 
-.didgeridoo-panel-window-close {
-    display:block;
-    background-image: url(../_images/ui-icons_000000_256x240.png);
-    background-position: -80px -128px;
+.didgeridoo-panel-window-icon {
+	position: absolute;
+	left: 8px; top: 2px;
     width:16px;
     height:17px;
-    margin-right: 5px;
-    float: right;
     cursor: pointer;
 }
 
+.didgeridoo-panel-window-title {
+	position: absolute;
+	left: 30px; top: 2px;
+	right: 30px; bottom: 2px;
+}
+
+.didgeridoo-panel-window-close {
+	position: absolute;
+	right: 8px; top: 2px;
+	width:16px;
+	height:17px;
+    background-image: url(../_images/ui-icons_000000_256x240.png);
+    background-position: -80px -128px;
+    cursor: pointer;
+}
+
+.didgeridoo-panel-window-close:hover {
+	background-image: url(../_images/ui-icons_ffffff_256x240.png);
+	background-position: -32px -192px;
+}
+
 .didgeridoo-panel-window-content {
-	min-height: 100px;
+	min-height: 144px;
 	overflow: auto;
-	color: #F2E9E1;
+	color: #000;
 	padding: 10px 5px;
 	z-index: 1;
 }

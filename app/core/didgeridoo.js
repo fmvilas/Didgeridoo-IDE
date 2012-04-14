@@ -1,20 +1,22 @@
-var didgeridoo = (function () {
+var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 
-	/**********************************************
-	 *					CONSTANTS				  *
-	 **********************************************/
+	/********************************************************************************************************************
+	 *														 CONSTANTS										  			*
+	 ********************************************************************************************************************/
 	 
 	var _ = {
 		APP_DIR: 'app',
 		MODULES_DIR: 'modules',
-		DEPS_FILENAME: 'deps.json'
+		LIBRARIES_DIR: 'libraries',
+		DEPS_FILENAME: 'deps.json',
+		LIBRARIES_LIST_PATH: 'app/init/libraries.list.json'
 	};
 	
 	
 	
-	/**********************************************
-	 *					  UTILS					  *
-	 **********************************************/
+	/********************************************************************************************************************
+	 *														   UTILS										  			*
+	 ********************************************************************************************************************/
 	
 	var logger = (function() {
 		
@@ -69,35 +71,82 @@ var didgeridoo = (function () {
 		
 	})();
 	
-	
-	
-	
-	/**********************************************
-	 *					 METHODS				  *
-	 **********************************************/
-	
-	var start = function() {
-		_buildUI();
+		
+	var assert = function(exp, message) {
+		if (!exp) {
+			throw new AssertException(message);
+		}
 	};
 	
-	/* _buildUI
-	 *
-	 * Constructs the Didgeridoo User Interface.
-	 */
-	var _buildUI = function() {
-		loadModule('ui/jqueryui', '');
-		loadModule('ui/layout', 'body', function() {
-			loadModule('ui/main-menu', '#ui-layout-north');
-			loadModule('ui/kendoui', 'body', function() {
-				loadModule('ui/tools', '#ui-layout-west > .container', function() {
-					loadModule('ui/project-explorer', '#ui-layout-west .container');
-				});
-			});
-			loadModule('ui/visual-editor', '#ui-layout-center');
-		});
-	};
 	
-	/* loadModule(module, [selector])
+	
+	
+	/********************************************************************************************************************
+	 *													    EXCEPTIONS										  			*
+	 ********************************************************************************************************************/
+	
+	var AssertException = function(message) {
+	    this.name = "AssertException";
+	    this.message = message || "Assert Exception occurred!";
+	    logger.warn(this.name + ': ' + this.message);
+	}
+	AssertException.prototype = new Error();
+	AssertException.prototype.constructor = AssertException;
+	
+	
+		
+	
+	/********************************************************************************************************************
+	 *														LIBRARIES										  			*
+	 ********************************************************************************************************************/
+	 
+	 var _loadLibrary = function(library, callback) {
+	 	
+	 	assert(arguments.length > 0, 'Not enough parameters for didgeridoo.libraries.load( library [, callback] ).\n'+
+	 										'«library» parameter is required!');
+
+	 	assert(typeof library == 'string', 'Type mismatch. «library» parameter in didgeridoo.libraries.load( library [, callback] ) must be a string.');
+	 	
+	 	if(arguments.length > 1) {
+			assert(typeof callback == 'function', 'Type mismatch. «callback» parameter in didgeridoo.libraries.load( library [, callback] ) must be a function.');
+		}
+	 	
+	 	
+	 	$.getJSON(_.LIBRARIES_LIST_PATH, function(libs) {
+	 	
+	 		var list = libs.libraries;
+	 		
+	 		assert(typeof list[library] == 'object', 'Library not found. «' + library + '» library does not exist.');
+	 		
+	 		if( typeof list[library].css == 'string' ) {
+	 			$('head').append('<link rel="stylesheet" type="text/css" href="' + _.APP_DIR + '/' + list[library].css + '" />');
+	 		}
+	 		
+ 			if( typeof list[library].js == 'string' ) {
+ 				if(callback) {
+ 						require( [list[library].js], callback );
+ 				} else {
+ 					require( [list[library].js] );
+ 				}
+ 			} else {
+ 				if(callback) {
+ 					callback.call(this);
+ 				}
+ 			}
+	 		
+	 	});
+	 	
+	 	
+	 }
+	 
+	
+	
+	
+	/********************************************************************************************************************
+	 *														 MODULES										  			*
+	 ********************************************************************************************************************/
+	
+	/* _loadModule(module, [selector])
 	 *
 	 * Loads a module specified at «module» parameter. Optionally
 	 * can append HTML dependencies at a specified jQuery's like «selector».
@@ -108,7 +157,7 @@ var didgeridoo = (function () {
 	 * selector:	(optional) string containing a jQuery's like selector to
 	 *				which append the module.
 	 */
-	var loadModule = function(module, selector, callback) {
+	var _loadModule = function(module, selector, callback) {
 		
 		if(arguments.length > 1 && typeof selector == 'string' ) {
 
@@ -142,6 +191,10 @@ var didgeridoo = (function () {
 							} else {
 								require(deps.js);
 							}
+						} else {
+							if(typeof callback == 'function') {
+								callback.call(this);
+							}
 						}
 					});
 				} else if(deps.js) {
@@ -173,13 +226,84 @@ var didgeridoo = (function () {
 	
 	
 	
+	
+	/********************************************************************************************************************
+	 *														 OBSERVER										  			*
+	 ********************************************************************************************************************/
+	/*
+	* Based on the Pub/Sub implementation by Addy Osmani
+	* http://addyosmani.com/
+	* https://github.com/addyosmani/pubsubz
+	* http://jsfiddle.net/LxPrq/
+	* Licensed under the GPL
+	*/
+	var topics = {},
+        subUid = -1;
+
+    _publish = function ( topic, args ) {
+
+        if (!topics[topic]) {
+            return false;
+        }
+
+        setTimeout(function () {
+            var subscribers = topics[topic],
+                len = subscribers ? subscribers.length : 0;
+
+            while (len--) {
+                subscribers[len].func(topic, args);
+            }
+        }, 0);
+
+        return true;
+
+    };
+
+    _subscribe = function ( topic, func ) {
+
+        if (!topics[topic]) {
+            topics[topic] = [];
+        }
+
+        var token = (++subUid).toString();
+        topics[topic].push({
+            token: token,
+            func: func
+        });
+        return token;
+    };
+
+    _unsubscribe = function ( token ) {
+        for (var m in topics) {
+            if (topics[m]) {
+                for (var i = 0, j = topics[m].length; i < j; i++) {
+                    if (topics[m][i].token === token) {
+                        topics[m].splice(i, 1);
+                        return token;
+                    }
+                }
+            }
+        }
+        return false;
+    };
+	
+	
 	/**********************************************
 	 *				PUBLIC INTERFACE			  *
 	 **********************************************/
 	return $.extend(_, {
 		logger: logger,
-		start: start,
-		loadModule: loadModule,
+		observer: {
+			publish: _publish,
+			subscribe: _subscribe,
+			unsubscribe: _unsubscribe
+		},
+		modules: {
+			load: _loadModule
+		},
+		libraries: {
+			load: _loadLibrary
+		},
 		ui: {
 			visualEditor: {}
 		}
