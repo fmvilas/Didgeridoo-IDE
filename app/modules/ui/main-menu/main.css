@@ -114,3 +114,16 @@
 #didgeridoo-main-menu > li > ul {
     margin-top:33px;
 }
+
+
+/**
+ * Styles for specific items	
+ */
+
+#didgeridoo-main-menu #didgeridoo-main-menu-didgeridoo {
+	display:block;
+	background: url(img/didgeridoo.png) center center no-repeat;
+	width: 90px;
+	height: 32px;
+	text-indent: -99999px;
+}
