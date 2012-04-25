@@ -26,6 +26,9 @@
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/libraries/jqueryui</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/kendoui</string>
 			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/templates/default</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/layout</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/project-explorer</string>
+			<string>file://localhost/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor</string>
 		</array>
 	</dict>
 	<key>com.macrabbit.Espresso.Publisher.DisclosureCollapsed</key>
