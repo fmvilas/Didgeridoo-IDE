@@ -218,7 +218,6 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		} else if(arguments.length == 1) {
 			require([_.MODULES_DIR + '/' + module + '/main']);
 		} else {
-			logger.warn('Not enough parameters for didgeridoo.loadModule(module, [selector]) function.\n'+
 			logger.warn('Not enough parameters for didgeridoo.loadModule(module [, selector]) function.\n'+
 						'«module» parameter is required!');
 		}
