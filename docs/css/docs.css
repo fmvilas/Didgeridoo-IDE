@@ -11,7 +11,6 @@
 body {
   position: relative;
   background-color: #fff;
-  padding-top: 60px;
   padding-bottom: 40px;
 }
 
@@ -35,6 +34,9 @@ hr.soften {
 
 /* Jumbotrons
 -------------------------------------------------- */
+#index {
+	margin-top: 60px;
+}
 .jumbotron {
   position: relative;
 }
@@ -159,7 +161,7 @@ hr.soften {
      -moz-border-radius: 0 0 4px 4px;
           border-radius: 0 0 4px 4px;
 }
-.navbar-fixed-top .brand {
+.navbar-inner .brand {
 	display: block;
 	background: url(../img/docs-small.png) center center no-repeat;
 	width: 130px;
@@ -167,6 +169,11 @@ hr.soften {
 	padding-top: 3px;
 	padding-bottom: 3px;
 	text-indent: -99999px;
+}
+.navbar-inner {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 .content h2 {
 	color: #bbb;
