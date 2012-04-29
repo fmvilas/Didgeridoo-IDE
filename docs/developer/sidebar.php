@@ -41,6 +41,12 @@
 								<a href="index.php?target=core#templates">Managing templates</a>
 							</li>
 							<li>
+								<a href="index.php?target=core#observer">Observer object</a>
+							</li>
+							<li>
+								<a href="index.php?target=core#exceptions">Exceptions</a>
+							</li>
+							<li>
 								<a href="index.php?target=core#logger">Logger object</a>
 							</li>
 							<li>

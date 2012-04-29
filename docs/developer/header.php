@@ -1,8 +1,32 @@
+<?php
+	
+	$target = $_GET['target'];
+	
+	switch($target) {
+
+		case "appStructure":
+			$title = "App Structure";
+			$body = "structure.html";
+		break;
+		
+		case "core":
+			$title = "Core";
+			$body = "core.html";
+		break;
+		
+		default:
+			$title = "Overview";
+			$body = "overview.html";
+		break;
+		
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Overview · Developer · Didgeridoo DOCS</title>
+		<title><?php echo $title; ?> · Developer · Didgeridoo DOCS</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="author" content="Francisco Mendez Vilas">
@@ -15,11 +39,12 @@
 		<!-- Le styles -->
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="../css/prettify.css" rel="stylesheet">
 		<link href="../css/docs.css" rel="stylesheet">
 
 	</head>
 
-	<body>
+	<body onload="prettyPrint();">
 
 		<div class="navbar">
 			<div class="navbar-inner">
@@ -47,4 +72,5 @@
 			<div class="row-fluid">
 				<?php
 					include "sidebar.php";
+					include $body;
 				?>

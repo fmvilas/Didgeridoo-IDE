@@ -181,7 +181,25 @@ hr.soften {
 .content p {
 	margin: 1em 0;
 }
+.label {
+	vertical-align: baseline;
+}
 
+/*
+ * Google Code Prettify
+ */
+
+pre.prettyprint {
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	padding: 8.5px;
+}
+pre.prettyprint ol li {
+	list-style-type: decimal;
+}
+pre.prettyprint ol {
+	color: #aaa;
+}
 
 
 /* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
