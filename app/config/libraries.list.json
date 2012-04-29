@@ -1,0 +1,12 @@
+{
+	"config": {
+		
+	},
+	
+	"libraries": {
+		"jqueryui": {
+			"js": "libraries/jqueryui/jquery-ui.min",
+			"css": "libraries/jqueryui/jquery-ui.css"
+		}
+	}
+}
