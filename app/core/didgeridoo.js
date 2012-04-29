@@ -4,13 +4,14 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	 *														 CONSTANTS										  			*
 	 ********************************************************************************************************************/
 	 
-	var _ = {
-		APP_DIR: 'app',
-		MODULES_DIR: 'modules',
-		LIBRARIES_DIR: 'libraries',
-		DEPS_FILENAME: 'deps.json',
-		LIBRARIES_LIST_PATH: 'app/init/libraries.list.json'
-	};
+
+	const	FILE_SEPARATOR = '/',
+			APP_DIR = 'app',
+			MODULES_DIR = 'modules',
+			DEPS_FILENAME = 'deps.json',
+			LIBRARIES_DIR = 'libraries',
+			CONFIG_DIR = 'config',
+			LIBRARIES_LIST_PATH = CONFIG_DIR + FILE_SEPARATOR + 'libraries.list.json'
 	
 	
 	
@@ -62,7 +63,6 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		var _error = function(message) { _log(message, 'error'); };
 		
 		return {
-			log: _log,
 			info: _info,
 			warn: _warn,
 			error: _error,
@@ -112,14 +112,14 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		}
 	 	
 	 	
-	 	$.getJSON(_.LIBRARIES_LIST_PATH, function(libs) {
+	 	$.getJSON(APP_DIR + FILE_SEPARATOR + LIBRARIES_LIST_PATH, function(libs) {
 	 	
 	 		var list = libs.libraries;
 	 		
 	 		assert(typeof list[library] == 'object', 'Library not found. «' + library + '» library does not exist.');
 	 		
 	 		if( typeof list[library].css == 'string' ) {
-	 			$('head').append('<link rel="stylesheet" type="text/css" href="' + _.APP_DIR + '/' + list[library].css + '" />');
+	 			$('head').append('<link rel="stylesheet" href="' + APP_DIR + FILE_SEPARATOR + list[library].css + '" />');
 	 		}
 	 		
  			if( typeof list[library].js == 'string' ) {
@@ -162,18 +162,18 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		if(arguments.length > 1 && typeof selector == 'string' ) {
 
 			//Load the dependencies schema
-			$.getJSON(_.APP_DIR + '/' + _.MODULES_DIR + '/' + module + '/' + _.DEPS_FILENAME, function(deps) {
+			$.getJSON(APP_DIR + FILE_SEPARATOR + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + DEPS_FILENAME, function(deps) {
 				
 				//Load the CSS...
 				if(deps.css) {
 					if(typeof deps.css != 'object') { deps.css = [deps.css]; } //If dep.css is not an array, let's make it
 					for(var i=0;i<deps.css.length;i++) {
-						$('head').append('<link rel="stylesheet" type="text/css" href="' + _.APP_DIR + '/' + _.MODULES_DIR + '/' + module + '/' + deps.css[i] + '" />');
+						$('head').append('<link rel="stylesheet" href="' + APP_DIR + FILE_SEPARATOR + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.css[i] + '" />');
 					}
 				}
 				//...and load the HTML...
 				if(deps.html) {
-					require(['text!' + _.MODULES_DIR + '/' + module + '/' + deps.html], function(html) {
+					require(['text!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.html], function(html) {
 						$(selector).append(html);
 						
 						//...and, when finished, load the JavaScript.
@@ -181,9 +181,9 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 							if(typeof deps.js != 'object') { deps.js = [deps.js]; } //If dep.js is not an array, let's make it
 							for(var i=0;i<deps.js.length;i++) {
 								if(deps.js[i].substr(0, 6) == 'order!') {
-									deps.js[i] = 'order!' + _.MODULES_DIR + '/' + module + '/' + deps.js[i].substr(6);
+									deps.js[i] = 'order!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i].substr(6);
 								} else {
-									deps.js[i] = _.MODULES_DIR + '/' + module + '/' + deps.js[i];
+									deps.js[i] = MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i];
 								}
 							}
 							if(typeof callback == 'function') {
@@ -201,9 +201,9 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 					if(typeof deps.js != 'object') { deps.js = [deps.js]; } //If dep.js is not an array, let's make it
 					for(var i=0;i<deps.js.length;i++) {
 						if(deps.js[i].substr(0, 6) == 'order!') {
-							deps.js[i] = 'order!' + _.MODULES_DIR + '/' + module + '/' + deps.js[i].substr(6);
+							deps.js[i] = 'order!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i].substr(6);
 						} else {
-							deps.js[i] = _.MODULES_DIR + '/' + module + '/' + deps.js[i];
+							deps.js[i] = MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i];
 						}
 					}
 					if(typeof callback == 'function') {
@@ -216,7 +216,7 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 				
 			});
 		} else if(arguments.length == 1) {
-			require([_.MODULES_DIR + '/' + module + '/main']);
+			require([MODULES_DIR + FILE_SEPARATOR + module + '/main']);
 		} else {
 			logger.warn('Not enough parameters for didgeridoo.loadModule(module [, selector]) function.\n'+
 						'«module» parameter is required!');
@@ -291,7 +291,8 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	/**********************************************
 	 *				PUBLIC INTERFACE			  *
 	 **********************************************/
-	return $.extend(_, {
+	return {
+		'FILE_SEPARATOR': FILE_SEPARATOR,
 		logger: logger,
 		observer: {
 			publish: _publish,
@@ -307,5 +308,6 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		ui: {
 			visualEditor: {}
 		}
-	});
+	}
+	
 })();
