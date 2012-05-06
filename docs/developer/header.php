@@ -19,6 +19,16 @@
 			$body = "libraries.html";
 		break;
 		
+		case "modules":
+			$title = "Modules";
+			$body = "modules.html";
+		break;
+		
+		case "templates":
+			$title = "Templates";
+			$body = "templates.html";
+		break;
+		
 		default:
 			$title = "Overview";
 			$body = "overview.html";

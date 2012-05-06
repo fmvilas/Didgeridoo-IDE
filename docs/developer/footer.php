@@ -7,6 +7,8 @@
 					Licensed under the GPL v3
 					<br>
 					&copy; Francisco Méndez Vilas, 2012
+					<br>
+					<a href="//twitter.com/fmvilas" target="_blank">@fmvilas</a> | <a href="//fmvilas.com" target="_blank">www.fmvilas.com</a>
 				</p>
 			</footer>
 

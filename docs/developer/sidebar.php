@@ -67,9 +67,6 @@
 							<li>
 								<a href="index.php?target=libraries#how">How to define</a>
 							</li>
-							<li>
-								<a href="index.php?target=libraries#guidelines">Development guidelines</a>
-							</li>
 							<li class="nav-header">
 								Modules
 							</li>
