@@ -8,10 +8,56 @@
     
     var	makeWireframe = function() {
     	var doc = $iframe[0].contentDocument,
-    	    body = doc.body,
-			all = $(body).find('*');
+    	    body = doc.body;
 			
-			$interactor.append(all);
+			traverseDOMTree(body, 'el', 0);
+			
+    };
+    
+    var dom2box = function(element) {
+    	var $box;
+    	
+    	if(element.nodeType != 3) {
+    		$box = $('<' + element.tagName + '/>');
+    	} else {
+    		$box = element;
+    	}
+    	
+    	return $box[0];
+    };
+    
+    var traverseDOMTree = function(element, name, index) {
+		
+		var nodeList = element.childNodes,
+			node,
+			html,
+			parent,
+			box,
+			elName = name;
+			
+		/*if(element.tagName == 'BODY') {
+			element = $interactor;
+		}*/
+		
+		for(var i = 0; i < nodeList.length; i++) {
+			node = nodeList.item(i);
+			
+			//box = dom2box(node);
+			//insert box
+			
+			/*if(node.nodeType != 3) {
+				html = node.innerHTML;
+			} else {
+				html = node.innerText;
+			}*/
+			
+			//$(element).append(html);
+			if(node.nodeType != 3) {
+				elName = elName + '' + i;
+				console.log(elName, ' - ', node);
+				traverseDOMTree(node, elName, i);
+			}
+		}
     };
     
     
@@ -98,9 +144,9 @@
     });
 
     $interactor.mousemove(function(e) {
-        if(isDragging == true) {
+        /*if(isDragging == true) {
             selectObjectFromPoint(e);
-        }
+        }*/
     });
 
     $interactorContainer.scroll(function(e) {
@@ -108,7 +154,7 @@
     });
 
     $iframe.load(function() {
-        $iframe.wrapTextBlobs();
+        //$iframe.wrapTextBlobs();
         //didgeridoo.ui.visualEditor.interactor.height($(didgeridoo.ui.visualEditor.iframe[0].contentDocument.body).outerHeight());
         //didgeridoo.ui.visualEditor.iframe[0].contentDocument.getElementsByTagName('html')[0].height = didgeridoo.ui.visualEditor.iframe[0].contentWindow.outerHeight;
         $interactor.height($iframe[0].contentDocument.body.scrollHeight);

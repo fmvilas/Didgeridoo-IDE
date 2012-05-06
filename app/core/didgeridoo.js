@@ -50,6 +50,7 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 				seconds: time.getSeconds(),
 				milliseconds: time.getMilliseconds(),
 				message: message,
+				output: finalMessage,
 				type: type
 			};
 			
@@ -62,11 +63,44 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 		
 		var _error = function(message) { _log(message, 'error'); };
 		
+		var _getList = function(filter) {
+			var def = {
+				info: false,
+				warn: false,
+				error: false
+			};
+			
+			if(filter) {
+				$.extend(def, filter);
+			} else {
+				filter = {
+					info: true,
+					warn: true,
+					error: true
+				};
+			}
+			
+			var output = [];
+			
+			for( var i = 0; i < logList.length; i++ ) {
+				if(logList[i].type === 'info' && filter.info === true ||
+				   logList[i].type === 'warn' && filter.warn === true ||
+				   logList[i].type === 'error' && filter.error === true) {
+						output.push(logList[i]);
+				}
+			}
+			
+			console.dir(output);
+			
+			return output;
+		};
+		
+		
 		return {
 			info: _info,
 			warn: _warn,
 			error: _error,
-			list: logList
+			getList: _getList
 		};
 		
 	})();
