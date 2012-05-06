@@ -184,6 +184,9 @@ hr.soften {
 .label {
 	vertical-align: baseline;
 }
+table th.scope {
+	width: 45px;
+}
 
 /*
  * Google Code Prettify

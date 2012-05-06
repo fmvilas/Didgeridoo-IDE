@@ -14,6 +14,11 @@
 			$body = "core.html";
 		break;
 		
+		case "libraries":
+			$title = "Libraries";
+			$body = "libraries.html";
+		break;
+		
 		default:
 			$title = "Overview";
 			$body = "overview.html";
