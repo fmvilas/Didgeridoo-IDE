@@ -1,0 +1,14 @@
+{
+	"name": "didgeridoo-dominspector",
+	"version": "1.0",
+	"renderTo": ".ui-layout-east > .container",
+	"entrypoint": "main.js",
+	"files": {
+		"html": {
+			"main": "main.html"
+		},
+		"css": {
+			"main": "main.css"
+		}
+	}
+}

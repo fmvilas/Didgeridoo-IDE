@@ -20,6 +20,7 @@ html, body {
 
 .didgeridoo-panel-window {
 	overflow: auto;
+	-webkit-user-select: none;
 }
 
 .didgeridoo-panel-window-collapsed {
@@ -50,10 +51,10 @@ html, body {
 }
 
 .didgeridoo-panel-window-header {
-	background-color: #d8d7d9;
-	color: #1C140D;
+	background-color: #777;
+	color: white;
 	height: 20px;
-	margin: 10px 4px 5px 4px;
+	margin: 10px 2px 5px 2px;
 	font-family: Lucida Grande, Geneva, Verdana, Arial;
 	font-size: 13px;
 	font-weight: normal;
@@ -86,7 +87,7 @@ html, body {
 	right: 8px; top: 2px;
 	width:16px;
 	height:17px;
-    background-image: url(../_images/ui-icons_000000_256x240.png);
+    background-image: url(../_images/ui-icons_ffffff_256x240.png);
     background-position: -80px -128px;
     cursor: pointer;
 }

@@ -1,17 +1,19 @@
-var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
+"use strict";
+
+window.didgeridoo = (function () {
 
 	/********************************************************************************************************************
 	 *														 CONSTANTS										  			*
 	 ********************************************************************************************************************/
 	 
 
-	const	FILE_SEPARATOR = '/',
-			APP_DIR = 'app',
-			MODULES_DIR = 'modules',
-			DEPS_FILENAME = 'deps.json',
-			LIBRARIES_DIR = 'libraries',
-			CONFIG_DIR = 'config',
-			LIBRARIES_LIST_PATH = CONFIG_DIR + FILE_SEPARATOR + 'libraries.list.json'
+	var	FILE_SEPARATOR = '/',
+		APP_DIR = 'app',
+		MODULES_DIR = 'modules',
+		MODULE_CONFIG_FILENAME = 'config.json',
+		LIBRARIES_DIR = 'libraries',
+		CONFIG_DIR = 'config',
+		LIBRARIES_LIST_PATH = CONFIG_DIR + FILE_SEPARATOR + 'libraries.list.json';
 	
 	
 	
@@ -90,8 +92,6 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 				}
 			}
 			
-			console.dir(output);
-			
 			return output;
 		};
 		
@@ -139,39 +139,40 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	 	assert(arguments.length > 0, 'Not enough parameters for didgeridoo.libraries.load( library [, callback] ).\n'+
 	 										'«library» parameter is required!');
 
-	 	assert(typeof library == 'string', 'Type mismatch. «library» parameter in didgeridoo.libraries.load( library [, callback] ) must be a string.');
+	 	assert(typeof library === 'string' || library instanceof Array, 'Type mismatch. «library» parameter in didgeridoo.libraries.load( library [, callback] ) must be a string.');
 	 	
 	 	if(arguments.length > 1) {
-			assert(typeof callback == 'function', 'Type mismatch. «callback» parameter in didgeridoo.libraries.load( library [, callback] ) must be a function.');
+			assert(typeof callback === 'function', 'Type mismatch. «callback» parameter in didgeridoo.libraries.load( library [, callback] ) must be a function.');
 		}
 	 	
+	 	if(typeof library === 'string') {
+		 	library = [library];
+	 	}
 	 	
-	 	$.getJSON(APP_DIR + FILE_SEPARATOR + LIBRARIES_LIST_PATH, function(libs) {
 	 	
-	 		var list = libs.libraries;
+ 		var list = didgeridoo.libraries.list, loaded = 0;
+ 			 		
+ 		for(var i = 0; i < library.length; i++) {
+ 			 		
+	 		assert(typeof list[library[i]] === 'object', 'Library not found. «' + library[i] + '» library does not exist.');
 	 		
-	 		assert(typeof list[library] == 'object', 'Library not found. «' + library + '» library does not exist.');
-	 		
-	 		if( typeof list[library].css == 'string' ) {
-	 			$('head').append('<link rel="stylesheet" href="' + APP_DIR + FILE_SEPARATOR + list[library].css + '" />');
+	 		if( typeof list[library[i]].css === 'string' ) {
+	 			$('head').append('<link rel="stylesheet" href="' + APP_DIR + FILE_SEPARATOR + list[library[i]].css + '" />');
 	 		}
 	 		
- 			if( typeof list[library].js == 'string' ) {
- 				if(callback) {
- 						require( [list[library].js], callback );
- 				} else {
- 					require( [list[library].js] );
- 				}
+ 			if( typeof list[library[i]].js === 'string' ) {
+ 				require( [list[library[i]].js], function() {
+	 				loaded++;
+	 				if(loaded === library.length) { callback.call(this); }
+ 				});
  			} else {
- 				if(callback) {
- 					callback.call(this);
- 				}
+ 				loaded++;
  			}
-	 		
-	 	});
-	 	
-	 	
-	 }
+ 			
+ 			if(loaded === library.length) { callback.call(this); }
+ 		}
+	 			 		 	
+	 };
 	 
 	
 	
@@ -191,78 +192,102 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	 * selector:	(optional) string containing a jQuery's like selector to
 	 *				which append the module.
 	 */
-	var _loadModule = function(module, selector, callback) {
+	var _loadModule = function() {
 		
-		if(arguments.length > 1 && typeof selector == 'string' ) {
-
-			//Load the dependencies schema
-			$.getJSON(APP_DIR + FILE_SEPARATOR + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + DEPS_FILENAME, function(deps) {
-				
-				//Load the CSS...
-				if(deps.css) {
-					if(typeof deps.css != 'object') { deps.css = [deps.css]; } //If dep.css is not an array, let's make it
-					for(var i=0;i<deps.css.length;i++) {
-						$('head').append('<link rel="stylesheet" href="' + APP_DIR + FILE_SEPARATOR + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.css[i] + '" />');
-					}
-				}
-				//...and load the HTML...
-				if(deps.html) {
-					require(['text!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.html], function(html) {
-						$(selector).append(html);
-						
-						//...and, when finished, load the JavaScript.
-						if(deps.js) {
-							if(typeof deps.js != 'object') { deps.js = [deps.js]; } //If dep.js is not an array, let's make it
-							for(var i=0;i<deps.js.length;i++) {
-								if(deps.js[i].substr(0, 6) == 'order!') {
-									deps.js[i] = 'order!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i].substr(6);
-								} else {
-									deps.js[i] = MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i];
-								}
-							}
-							if(typeof callback == 'function') {
-								require(deps.js, callback);
-							} else {
-								require(deps.js);
-							}
-						} else {
-							if(typeof callback == 'function') {
-								callback.call(this);
-							}
-						}
-					});
-				} else if(deps.js) {
-					if(typeof deps.js != 'object') { deps.js = [deps.js]; } //If dep.js is not an array, let's make it
-					for(var i=0;i<deps.js.length;i++) {
-						if(deps.js[i].substr(0, 6) == 'order!') {
-							deps.js[i] = 'order!' + MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i].substr(6);
-						} else {
-							deps.js[i] = MODULES_DIR + FILE_SEPARATOR + module + FILE_SEPARATOR + deps.js[i];
-						}
-					}
-					if(typeof callback == 'function') {
-						require(deps.js, callback);
-					} else {
-						require(deps.js);
-					}
-				}
-				
-				
-			});
-		} else if(arguments.length == 1) {
-			require([MODULES_DIR + FILE_SEPARATOR + module + '/main']);
-		} else {
-			logger.warn('Not enough parameters for didgeridoo.loadModule(module [, selector]) function.\n'+
+		assert(	arguments.length > 0,
+				'Not enough parameters for didgeridoo.loadModule(module [, selector]) function.\n'+
 						'«module» parameter is required!');
-		}
+		assert(	typeof arguments[0] === 'string',
+				'el parametro module no es un string');
+		
+		
+		var module = arguments[0],
+			selector,
+			callback,
+			_module_path = APP_DIR + '/' + MODULES_DIR + '/' + module + '/';
+		
+		if(typeof arguments[1] !== 'undefined') {
+			
+			assert(	typeof arguments[1] === 'string' ||
+					typeof arguments[1] === 'function',
+					'el segundo parametro debe ser selector o callback');
+			
+			if(typeof arguments[1] === 'function') {
+				callback = arguments[1];
+			} else {
+				selector = arguments[1];
 				
+				assert(	typeof arguments[2] === 'function' ||
+						typeof arguments[2] === 'undefined',
+						'el tercer parametro debe ser una funcion');
+				
+				if(arguments[2]) {
+					callback = arguments[2];
+				}
+			}
+			
+		}
+		
+		//Load the dependencies schema
+		$.ajax({
+			type: 'GET',
+			dataType: 'json',
+			url: _module_path + MODULE_CONFIG_FILENAME,
+			success: function(config) {
+				
+				var deps, version, files, entrypoint;
+				
+				assert(typeof config === 'object' && !Array.isArray(config), 'error!! no se ha podido recuperar el archivo de configuracion o no es un objeto!!');
+				assert(typeof config.entrypoint === 'string', 'no hay entrypoint o no es un string!!');
+				
+				entrypoint = config.entrypoint;
+				if(entrypoint.substr(-3) === '.js') { entrypoint = entrypoint.substr(0, entrypoint.length - 3); }
+				files = config.files;
+									
+				var mconfig = $.extend(true, config, {
+					url: _module_path,
+					renderTo: selector,
+					id: module
+				});
+				
+				require([MODULES_DIR + '/' + module + '/' + entrypoint], function(m) {
+					$.extend( true, m, _moduleProto(mconfig) );
+					didgeridoo.modules.list[module] = m;
+					if(callback) {
+						var token = didgeridoo.observer.subscribe(config.name + '.ready', function() {
+							didgeridoo.observer.unsubscribe(token);
+							callback(m);
+						});
+					}
+					
+					didgeridoo.observer.publish(config.name + '.loaded', m);
+				});
+				
+			}, //end of success function
+			error: function(xhr, status, errorThrown) {
+				logger.warn('Oops! Didgeridoo couldn\'t load the "' + module + '" module.\n'+
+									'Error details:\n  Status Text: ' + status + '\n  errorThrown: ' + errorThrown);
+			} //end of error function
+		});
+	
+				
+	};
+	
+	var _moduleProto = function(_mconfig) {
+		return {
+			originalConfig: _mconfig
+		};
+	};
+	
+	var _getModule = function(module) {
+		return didgeridoo.modules.list.hasOwnProperty(module) ? didgeridoo.modules.list[module] : null;
 	};
 	
 	
 	
 	
 	/********************************************************************************************************************
-	 *														 OBSERVER										  			*
+	 * OBSERVER
 	 ********************************************************************************************************************/
 	/*
 	* Based on the Pub/Sub implementation by Addy Osmani
@@ -274,7 +299,7 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	var topics = {},
         subUid = -1;
 
-    _publish = function ( topic, args ) {
+    var _publish = function ( topic, args ) {
 
         if (!topics[topic]) {
             return false;
@@ -293,21 +318,33 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 
     };
 
-    _subscribe = function ( topic, func ) {
-
-        if (!topics[topic]) {
-            topics[topic] = [];
-        }
-
-        var token = (++subUid).toString();
-        topics[topic].push({
-            token: token,
-            func: func
-        });
-        return token;
+   var  _subscribe = function ( topic, func ) {
+		
+		var tokens = [];
+		
+		topic = topic.split(',');
+		for(var i=0; i < topic.length; i++) {
+			topic[i] = topic[i].trim();
+		}
+			
+		for(var i=0; i < topic.length; i++) {
+			if (!topics[topic[i]]) {
+	            topics[topic[i]] = [];
+	        }
+	
+	        var token = (++subUid).toString();
+	        topics[topic[i]].push({
+	            token: token,
+	            func: func
+	        });
+	        
+	        tokens.push(token);
+		}
+        
+        return tokens;
     };
 
-    _unsubscribe = function ( token ) {
+   var  _unsubscribe = function ( token ) {
         for (var m in topics) {
             if (topics[m]) {
                 for (var i = 0, j = topics[m].length; i < j; i++) {
@@ -323,24 +360,33 @@ var d = didgeridoo = (function () { // 'd' is shorthand for 'didgeridoo'
 	
 	
 	/**********************************************
-	 *				PUBLIC INTERFACE			  *
+	 *                 PUBLIC INTERFACE        	  *
 	 **********************************************/
 	return {
 		'FILE_SEPARATOR': FILE_SEPARATOR,
+		'APP_DIR': APP_DIR,
+		'MODULES_DIR': MODULES_DIR,
+		'MODULE_CONFIG_FILENAME': MODULE_CONFIG_FILENAME,
+		'LIBRARIES_DIR': LIBRARIES_DIR,
+		'CONFIG_DIR': CONFIG_DIR,
+		'LIBRARIES_LIST_PATH': LIBRARIES_LIST_PATH,
 		logger: logger,
+		utils: {
+			assert: assert
+		},
 		observer: {
 			publish: _publish,
 			subscribe: _subscribe,
 			unsubscribe: _unsubscribe
 		},
 		modules: {
+			list: {},
+			get: _getModule,
 			load: _loadModule
 		},
 		libraries: {
-			load: _loadLibrary
-		},
-		ui: {
-			visualEditor: {}
+			load: _loadLibrary,
+			list: {}
 		}
 	}
 	

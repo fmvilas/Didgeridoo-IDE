@@ -13,22 +13,28 @@
     float: left;
     text-indent: none;
     position: relative;
+    height: 30px;
 }
 
 #didgeridoo-main-menu > li > a {
     display:block;
     width:auto;
-    height:24px;
-    padding: 8px 20px 0 20px;
-    border-right: #333 1px solid;
+    /*border: rgba(255,255,255,.1) 1px solid;*/
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,.4), inset 0px -1px 1px rgba(255,255,255,.1);
+    color: #fff;
     font-family: Lucida Grande, Geneva, Arial, Verdana;
     font-size: 13px;
+    padding: 4px 20px;
+    margin: 4px 10px;
     cursor: default;
+    border-radius: 30px;
 }
 
 #didgeridoo-main-menu > li a:hover {
-    color: #fff;
-    border-bottom: none;
+    background-color: rgba(255, 0, 92, .8);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,.4), inset 0px -1px 1px rgba(255,255,255,.1);
+    border: none;
+    padding: 4px 20px;
 }
 
 /********************************
@@ -57,7 +63,7 @@
 }
 
 #didgeridoo-main-menu > li ul li {
-    color: #bbb;
+    color: #fff;
     min-height: 24px;
     font-family: Lucida Grande, Geneva, Arial, Verdana;
     font-size: 12px;
@@ -66,8 +72,9 @@
 }
 
 #didgeridoo-main-menu > li ul li:hover {
-	background-color: #005C83;
-    color: #bbb;
+	padding: 0;
+	background-color: #fff;
+    color: #FF005C;
 }
 
 #didgeridoo-main-menu > li ul .didgeridoo-main-menu-separator,
@@ -85,6 +92,14 @@
     max-width: 160px;
     width:auto;
     float:left;
+}
+
+
+#didgeridoo-main-menu > li ul li.hover > a {
+    background-color: #fff;
+    color: #FF005C;
+    padding:4px 3px 0 15px;
+    box-shadow: none;
 }
 
 #didgeridoo-main-menu > li ul li .didgeridoo-main-menu-open-icon {
@@ -122,8 +137,16 @@
 
 #didgeridoo-main-menu #didgeridoo-main-menu-didgeridoo {
 	display:block;
-	background: url(img/didgeridoo.png) center center no-repeat;
-	width: 90px;
+	background: url(img/didgeridoo.png) 5px 3px no-repeat transparent;
+	width: 120px;
 	height: 32px;
+	margin: 0 20px 0 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
 	text-indent: -99999px;
+}
+#didgeridoo-main-menu #didgeridoo-main-menu-didgeridoo:hover {
+	box-shadow: none;
+	background-position-y: -29px;
 }

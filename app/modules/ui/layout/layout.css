@@ -1,0 +1,120 @@
+.ui-layout-north {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 35px;
+	background: -webkit-linear-gradient(top, #3E362F, #1C140D);
+	background: -moz-linear-gradient(top, #3E362F, #1C140D);
+	background: -ms-linear-gradient(top, #3E362F, #1C140D);
+	background: -o-linear-gradient(top, #3E362F, #1C140D);
+	background: linear-gradient(top, #3E362F, #1C140D);
+	border-bottom: rgba(255, 0, 92, .6) 2px solid;
+	box-shadow: #000 0 0 5px;
+	overflow: visible !important;
+	z-index: 9999999 !important;
+}
+
+.ui-layout-middle-row {	
+	position: fixed;
+	left: 0;
+	top: 33px;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+}
+
+.ui-layout-aside, .ui-layout-aside.ui-resizable {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 200px;
+	border:	none;
+	padding: 0;
+	overflow: auto;
+	background: #F1F0F2;
+	z-index: 20;
+}
+
+.ui-layout-middle-row .ui-layout-west {
+	left: 0;
+	border-right: #E4E3E5 2px solid;
+}
+
+.ui-layout-center {
+	position: absolute;
+	left: 200px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ddd;
+	font-size: 11px;
+	padding: 0;
+	border:none;
+	overflow: auto;
+	z-index: 10;
+}
+
+.ui-layout-center .ui-layout-center-tab-list {
+	position: relative;
+	border-radius: 0;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	padding-top: 5px;
+	z-index: 10;
+}
+
+.ui-layout-center .ui-layout-center-tab-list li {
+	width: 110px;
+}
+
+.ui-layout-center-tab-list li.ui-state-default {
+	opacity: .7;
+}
+
+.ui-layout-center-tab-list li.ui-state-active, .ui-layout-center-tab-list li.ui-state-hover {
+	opacity: 1;
+	background: -webkit-linear-gradient(#fff 10%, #ddd 100%);
+}
+
+.ui-layout-center .ui-layout-center-tab-list li, .ui-layout-center .ui-layout-center-tab-list li a { 
+	cursor: pointer;
+}
+
+.ui-layout-center .ui-layout-center-tab-list li a {
+	display: block;
+	width: 80px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+}
+
+.ui-layout-center-tab-list li .ui-icon {
+	float: right;
+	margin: 4px 5px 2px 0;
+	cursor: pointer;
+}
+
+.ui-layout-middle-row .ui-layout-east {
+	right: 0;
+	border-left: #E4E3E5 2px solid;
+}
+
+
+/* jQuery UI styles override */
+
+.ui-resizable-e {
+	right: 0;
+}
+
+.ui-resizable-e:hover {
+	border-right: #E4E3E5 2px solid;
+}
+
+.ui-resizable-w {
+	left: 0;
+}
+
+.ui-resizable-w:hover {
+	border-left: #E4E3E5 2px solid;
+}

@@ -1,0 +1,69 @@
+.didgeridoo-panel-window-dominspector-icon {
+    background-image: url(../_images/ui-icons_000000_256x240.png);
+    background-position: -176px -112px;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content {
+	margin: 0;
+	padding: 0;
+	word-wrap: break-word;
+	border-bottom: #e4e3e5 2px solid;
+	background: #fff;
+	min-height: 40px;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content a {
+	color: #333;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content h3 {
+	font-size: 12px;
+	font-weight: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	direction: rtl;
+	margin: 0;
+	padding: 3px;
+	background: #eee;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .css-rule {
+	border-top: #e4e3e5 2px solid;
+	background: white;	
+	padding: 15px 5px;
+	font-size: 12px;
+	overflow: auto;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .ruleName {
+	display: block;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .css-line {
+	display: block;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .applied {
+	visibility: hidden;
+	width: 11px;
+	height: 11px;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content div:hover .applied {
+	visibility: visible;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .propName {
+	width: 1px;
+	border: none;
+	outline: none;
+	margin-left: 5px;
+	color: #a0a;
+}
+
+#didgeridoo-dominspector .didgeridoo-panel-window-content .propValue {
+	width: 1px;
+	border: none;
+	outline: none;
+	color: black;
+}

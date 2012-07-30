@@ -1,0 +1,14 @@
+{
+	"name": "didgeridoo-layout",
+	"version": "1.0",
+	"renderTo": "body",
+	"entrypoint": "layout.js",
+	"files": {
+		"html": {
+			"layout": "layout.html"
+		},
+		"css": {
+			"layout": "layout.css"
+		}
+	}
+}
