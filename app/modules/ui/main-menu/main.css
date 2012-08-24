@@ -1,5 +1,5 @@
 #didgeridoo-main-menu {
-	color: #bbb;
+    color: #bbb;
     width:100%;
     height:32px;
     list-style: none;
@@ -8,6 +8,16 @@
     -webkit-padding-start: 0;
     -moz-padding-start: 0;
 }
+
+#didgeridoo-main-menu .didgeridoo-main-menu-right {
+    float: right;
+}
+
+#didgeridoo-main-menu > li.didgeridoo-main-menu-right ul {
+    left: auto;
+    right: 0;
+}
+
 
 #didgeridoo-main-menu > li {
     float: left;
@@ -72,8 +82,8 @@
 }
 
 #didgeridoo-main-menu > li ul li:hover {
-	padding: 0;
-	background-color: #fff;
+    padding: 0;
+    background-color: #fff;
     color: #FF005C;
 }
 
@@ -133,20 +143,31 @@
 
 /**
  * Styles for specific items	
- */
+*/
 
 #didgeridoo-main-menu #didgeridoo-main-menu-didgeridoo {
-	display:block;
-	background: url(img/didgeridoo.png) 5px 3px no-repeat transparent;
-	width: 120px;
-	height: 32px;
-	margin: 0 20px 0 0;
-	padding: 0;
-	border: none;
-	border-radius: 0;
-	text-indent: -99999px;
+    display:block;
+    background: url(img/didgeridoo.png) 5px 3px no-repeat transparent;
+    width: 120px;
+    height: 32px;
+    margin: 0 20px 0 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    text-indent: -99999px;
 }
 #didgeridoo-main-menu #didgeridoo-main-menu-didgeridoo:hover {
-	box-shadow: none;
-	background-position-y: -29px;
+    box-shadow: none;
+    background-position-y: -29px;
+}
+
+#didgeridoo-main-menu #didgeridoo-main-menu-user {
+    display:block;
+    background: url('http://gravatar.com/avatar/f3bad9b06a1b0512c5c837f28dddd985?s=30&d=mm') left 1px no-repeat transparent;
+    color: #ccc;
+    height: 32px;
+    margin: 0 20px 0 0;
+    padding: 8px 0 0 40px;
+    border: none;
+    border-radius: 0;
 }

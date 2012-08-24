@@ -127,7 +127,6 @@ define(function() {
 			$.ajax({
 				url: url,
 				success: function(code) {
-					console.dir(_editor);
 					_editor.setValue(code);
 				},
 				error: function(jqXHR, status, errorThrown) {

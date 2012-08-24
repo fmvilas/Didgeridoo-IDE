@@ -1205,7 +1205,7 @@ define(function() {
 	
 	
 	
-	return Designer;
+        return Designer;
 	
 	    
 }); //end of define

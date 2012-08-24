@@ -1,31 +1,52 @@
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	overflow: auto !important;
-	color: #000;
-	font-family: 'Lucida Grande', Geneva, Verdana, Arial;
-	font-size: 12px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto !important;
+    color: #000;
+    font-family: 'Lucida Grande', Geneva, Verdana, Arial;
+    font-size: 12px;
 }
 
+
+@font-face {
+    font-family: 'FuturaLT';
+    src: url('/didgeridoo/app/resources/fonts/FuturaLT/futuraltlight-webfont.eot');
+    src: url('/didgeridoo/app/resources/fonts/FuturaLT/futuraltlight-webfont.eot?iefix') format('eot'),
+         url('/didgeridoo/app/resources/fonts/FuturaLT/futuraltlight-webfont.woff') format('woff'),
+         url('/didgeridoo/app/resources/fonts/FuturaLT/futuraltlight-webfont.ttf') format('truetype'),
+         url('/didgeridoo/app/resources/fonts/FuturaLT/futuraltlight-webfont.svg#webfontsuzkNZHJ') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Exo';
+    src: url('/didgeridoo/app/resources/fonts/Exo/Exo-ExtraLight.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .ui-layout-aside > .container {
-	height: auto;
+    height: auto;
 }
 
 .didgeridoo-panel-window {
-	overflow: auto;
-	-webkit-user-select: none;
+    display: none;
+    overflow: auto;
+    -webkit-user-select: none;
 }
 
 .didgeridoo-panel-window-collapsed {
-	overflow: hidden;
-	height: 30px;
+    overflow: hidden;
+    height: 30px;
 }
 
 .light-scrollbar::-webkit-scrollbar {
@@ -35,72 +56,87 @@ html, body {
 }
 
 .light-scrollbar:hover::-webkit-scrollbar {
-	display: block;
+    display: block;
 }
- 
+
 .light-scrollbar::-webkit-scrollbar-track {
     background: #E4E3E5;
 }
- 
+
 .light-scrollbar::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     background: #777; 
 }
 .light-scrollbar::-webkit-scrollbar-thumb:window-inactive {
-	background: #333; 
+    background: #333; 
 }
 
 .didgeridoo-panel-window-header {
-	background-color: #777;
-	color: white;
-	height: 20px;
-	margin: 10px 2px 5px 2px;
-	font-family: Lucida Grande, Geneva, Verdana, Arial;
-	font-size: 13px;
-	font-weight: normal;
-	letter-spacing: .1em;
-	text-align: left;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
-	z-index: 2;
-	border-radius: 10px;
-	text-overflow: ellipsis;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 30px;
+    margin: 16px 1px 5px 1px;
+    padding: 0 10px 6px 10px;
+    border-bottom: #ddd 1px solid;
+    overflow: hidden;
+    z-index: 2;
 }
 
 .didgeridoo-panel-window-icon {
-	position: absolute;
-	left: 8px; top: 2px;
+    position: absolute;
+    left: 8px; top: 2px;
     width:16px;
     height:17px;
     cursor: pointer;
 }
 
-.didgeridoo-panel-window-title {
-	position: absolute;
-	left: 30px; top: 2px;
-	right: 30px; bottom: 2px;
+.didgeridoo-panel-window-header-title {
+    height: 22px;
+    overflow: hidden;
+    color: #999;
+    font-family: 'Exo', Lucida Grande, Geneva, Verdana, Arial;
+    font-size: 18px;
+    letter-spacing: .17em;
+    text-align: left;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
 }
 
 .didgeridoo-panel-window-close {
-	position: absolute;
-	right: 8px; top: 2px;
-	width:16px;
-	height:17px;
-    background-image: url(../_images/ui-icons_ffffff_256x240.png);
+    position: absolute;
+    top: 2px;
+    right: 8px; 
+    width:16px;
+    height:17px;
+    background-image: url(../_images/ui-icons_bbbbbb_256x240.png);
     background-position: -80px -128px;
     cursor: pointer;
 }
 
 .didgeridoo-panel-window-close:hover {
-	background-image: url(../_images/ui-icons_ffffff_256x240.png);
-	background-position: -32px -192px;
+    background-image: url(../_images/ui-icons_000000_256x240.png);
+    background-position: -80px -128px;
 }
 
-.didgeridoo-panel-window-content {
-	min-height: 144px;
-	overflow: auto;
-	color: #000;
-	padding: 10px 5px;
-	z-index: 1;
+.ui-layout-sidebar .didgeridoo-panel-window-toolbar {
+    background-image: none;
+    background-color: transparent;
+}
+
+.ui-layout-sidebar .didgeridoo-panel-window-content {
+    position: absolute;
+    left: 0;
+    top: 45px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    color: #000;
+    padding: 1px;
+    z-index: 1;
+}
+
+.didgeridoo-panel-window-hidden {
+    display: none;
 }

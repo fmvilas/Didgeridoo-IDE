@@ -1,7 +1,19 @@
-.didgeridoo-panel-window-tools-icon {
-    background-image: url(../_images/ui-icons_ffffff_256x240.png);
-    background-position: -176px -112px;
+.didgeridoo-tools-icon, .didgeridoo-tools-icon.ui-layout-sidebar-nav-icon-active, .didgeridoo-tools-icon:hover {
+    background-image: url('../_images/icons.png');
 }
+
+.didgeridoo-tools-icon {
+    background-position: 0 0;
+}
+
+.didgeridoo-tools-icon:hover {
+    background-position-y: -40px;
+}
+
+.didgeridoo-tools-icon.ui-layout-sidebar-nav-icon-active {
+    background-position-y: -80px;
+}
+
 
 #didgeridoo-tools .ui-accordion-header {
 	background: none;

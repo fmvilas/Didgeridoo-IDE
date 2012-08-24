@@ -1,4 +1,66 @@
-.didgeridoo-panel-window-project-explorer-icon {
-    background-image: url(../_images/ui-icons_000000_256x240.png);
-    background-position: 0 -96px;
+.didgeridoo-project-explorer-icon, .didgeridoo-project-explorer-icon.ui-layout-sidebar-nav-icon-active, .didgeridoo-project-explorer-icon:hover {
+    background-image: url('../_images/icons.png');
+}
+
+.didgeridoo-project-explorer-icon {
+    background-position: -80px 0;
+}
+
+.didgeridoo-project-explorer-icon:hover {
+    background-position-y: -40px;
+}
+
+.didgeridoo-project-explorer-icon.ui-layout-sidebar-nav-icon-active {
+    background-position-y: -80px;
+}
+
+#didgeridoo-project-explorer {
+    height: 100%;
+}
+
+#didgeridoo-project-explorer .light-scrollbar::-webkit-scrollbar {
+    display: block;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-expander {
+    background-image: url('../_images/icons.png');
+    background-position: -320px 0;
+}
+
+#didgeridoo-project-explorer .x-grid-row.x-grid-tree-node-expanded .x-tree-expander {
+    background-position: -320px -24px;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-parent {
+    background-image: url('../_images/icons.png');
+    background-position: -320px -48px;
+}
+
+#didgeridoo-project-explorer .x-grid-row.x-grid-tree-node-expanded .x-tree-icon-parent {
+    background-position: -320px -72px;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf {
+    background-image: url('../_images/icons.png');
+    background-position: -344px 0;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf.icon-html {
+    background-position: -344px -24px;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf.icon-css{
+    background-position: -344px -48px;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf.icon-js{
+    background-position: -344px -72px;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf.icon-php{
+    background-position: -368px 0;
+}
+
+#didgeridoo-project-explorer .x-grid-row .x-tree-icon-leaf.icon-image{
+    background-position: -368px -24px;
 }
