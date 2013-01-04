@@ -1,4 +1,4 @@
-![](./Didgeridoo-IDE/logo.png)
+![](https://raw.github.com/fmvilas/Didgeridoo-IDE/master/logo.png)
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
