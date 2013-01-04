@@ -1,0 +1,37 @@
+---------------------------------------------------
+Some machine changes for didgeridoo to work locally
+---------------------------------------------------
+
+1) Add to httpd.conf
+--------------------
+
+NameVirtualHost *:80
+
+ <VirtualHost *:80>
+     DocumentRoot "/Users/flanpackdeseis/www/"
+     ServerName localhost
+ </VirtualHost>
+ 
+ <VirtualHost *:80>
+     DocumentRoot "/Users/YOURUSERNAME/www/didgeridoo/public"
+     ServerName didgeridoo.dev
+ </VirtualHost>
+
+
+
+***********
+ IMPORTANT
+***********
+
+There cannot be alone lines such as following:
+
+ServerName localhost
+DocumentRoot "/Users/YOURUSERNAME/www/"
+
+Instead, localhost must be specified inside another <VirtualHost>.
+
+
+2) Add to /private/etc/hosts
+----------------------------
+
+127.0.0.1 	didgeridoo.dev

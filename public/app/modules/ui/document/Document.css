@@ -1,0 +1,105 @@
+.didgeridoo-document-wrapper {
+	position: absolute;
+	left: 0;
+	top: 32px;
+	right: 0;
+	bottom: 0;
+	box-shadow: none;
+}
+
+.didgeridoo-document-toolbar {
+	position: absolute;
+	left: 0;
+	top: 3px;
+	right: 0;
+	height: 32px;
+	background: #F1F0F2;
+	color: black;
+	padding: 0 10px;
+	border-bottom: #ccc 1px solid;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar {
+	margin-top: 0;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn {
+	background: transparent;
+	border: none;
+	margin: 0;
+	box-shadow: none;
+	cursor: default;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn-group > .btn + .btn {
+	margin-left: -1px;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn.codeview .icon-eye-open {
+	display: none;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn.codeview .icon-eye-close {
+	display: inline-block;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn.codeview.active .icon-eye-open {
+	display: inline-block;
+}
+
+.didgeridoo-document-toolbar .btn-toolbar .btn.codeview.active .icon-eye-close {
+	display: none;
+}
+
+.didgeridoo-document-container {
+	position: absolute;
+	left: 0;
+	top: 35px;
+	right: 0;
+	bottom: 0;
+}
+
+.didgeridoo-document-container .designer-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 200;
+}
+
+.didgeridoo-document-container .codeview-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
+}
+
+.didgeridoo-document-container.designer .designer-container {
+	display: block;
+}
+
+.didgeridoo-document-container.designer .codeview-container {
+	display: none;
+}
+
+.didgeridoo-document-container.codeview .designer-container {
+	display: none;
+}
+
+.didgeridoo-document-container.codeview .codeview-container {
+	display: block;
+}
+
+/* jQuery UI styles override */
+.ui-tabs .ui-tabs-panel {
+	background: #F1F0F2;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
+.ui-tabs .ui-tabs-nav li.ui-state-processing a {
+	cursor: default;
+}

@@ -1,0 +1,19 @@
+.icon32 {
+    background-image: url('/images/icons.png');
+}
+
+.icon32-folder-open {
+    background-position: -80px 0;
+}
+
+.icon32-folder-open.active {
+    background-position-y: -40px;
+}
+
+.icon32-tools {
+    background-position: 0 0;
+}
+
+.icon32-tools.active {
+    background-position-y: -40px;
+}

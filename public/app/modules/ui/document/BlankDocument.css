@@ -1,0 +1,6 @@
+@import url('./Document.css');
+
+.blank-document .didgeridoo-document-container .designer-container,
+.blank-document .designer-toolbar {
+	display: none;
+}

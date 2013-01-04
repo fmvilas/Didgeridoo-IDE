@@ -1,0 +1,6 @@
+@import url('./Document.css');
+
+.plain-text-document .designer-toolbar,
+.plain-text-document .designer-container {
+	display: block;
+}

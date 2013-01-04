@@ -1,0 +1,336 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"le",
+				"ledify"
+			],
+			[
+				"requi",
+				"requireLib"
+			],
+			[
+				"req",
+				"requireLib"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 1225,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/css/common.css",
+			"settings":
+			{
+				"buffer_size": 3019,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/didgeridoo.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Set Syntax: HTML (Erlang)"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 189.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/flanpackdeseis/www/mv/wp-content/themes/mv/index.html",
+		"/Users/flanpackdeseis/www/ledify/index.html",
+		"/Users/flanpackdeseis/www/didgeridoo/build.sh",
+		"/Users/flanpackdeseis/www/ledify/ledify.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/project-explorer/main.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/project-explorer/main.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/libraries/jqueryui/css/jquery-ui.all.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/main-menu/main.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/main-menu/.dependencies",
+		"/Users/flanpackdeseis/www/didgeridoo/app.build.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/layout/layout.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/styles.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/didgeridoo.js",
+		"/Users/flanpackdeseis/www/didgeridoo/public/index.html",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/libraries/extjs/resources/css/ext-all-gray.css",
+		"/Users/flanpackdeseis/www/didgeridoo/public/css/common.css",
+		"/Users/flanpackdeseis/www/didgeridoo/routes/index.js",
+		"/Users/flanpackdeseis/www/didgeridoo/app.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/index.html",
+		"/Users/flanpackdeseis/www/didgeridoo/build/index.html",
+		"/Users/flanpackdeseis/www/didgeridoo/src/routes/index.js",
+		"/Users/flanpackdeseis/www/didgeridoo/public/stylesheets/style.less",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/main-menu/main.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/layout/layout.js",
+		"/Users/flanpackdeseis/www/didgeridoo/build/app/didgeridoo.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/main.js",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/core/didgeridoo.js",
+		"/Users/flanpackdeseis/www/didgeridoo/build/app/didgeridoo.min.js",
+		"/Users/flanpackdeseis/www/didgeridoo/build/main.js",
+		"/Users/flanpackdeseis/www/didgeridoo/build/app/styles.css",
+		"/Users/flanpackdeseis/www/didgeridoo/src/app/modules/ui/_css/common.css",
+		"/Users/flanpackdeseis/www/didgeridoo/build/app/main.js",
+		"/Users/flanpackdeseis/www/didgeridoo/build/app/build.txt",
+		"/Users/flanpackdeseis/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/flanpackdeseis/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/flanpackdeseis/www/didgeridoo/didgeridoo.sublime-workspace",
+		"/Users/flanpackdeseis/www/didgeridoo/didgeridoo.sublime-build",
+		"/Users/flanpackdeseis/www/didgeridoo/didgeridoo.sublime-project",
+		"/Users/flanpackdeseis/www/didgeridoo/package.json",
+		"/Users/flanpackdeseis/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/flanpackdeseis/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/flanpackdeseis/Desktop/Universidad/windows/at/practica 1/p1_a/p1_a/src/main.cpp",
+		"/Users/flanpackdeseis/Desktop/Universidad/windows/at/practica 1/p1_a/p1_a/src/menu_principal.cpp",
+		"/Users/flanpackdeseis/Desktop/Universidad/windows/at/practica 2/src/url.cpp",
+		"/Users/flanpackdeseis/www/didgeridoo/src/package.json",
+		"/Users/flanpackdeseis/www/didgeridoo/index.html",
+		"/Users/flanpackdeseis/www/didgeridoo/README.md",
+		"/Users/flanpackdeseis/www/terrific-composer/src/Terrific/Composition/Resources/views/Default/index.html.twig",
+		"/Applications/MAMP/conf/php5.3/php.ini",
+		"/Users/flanpackdeseis/www/didgeridoo/app/server/rest/README.markdown",
+		"/Users/flanpackdeseis/Downloads/balnxxe/menu.tcl",
+		"/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor/main.js",
+		"/Users/flanpackdeseis/Downloads/CodeMirror-2.3/README.md",
+		"/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor/handle.html",
+		"/Users/flanpackdeseis/www/didgeridoo/app/modules/ui/visual-editor/main.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"console",
+			"(images",
+			"'fonts",
+			"(images/",
+			"'images/",
+			"(img",
+			"../_images/",
+			"/images/",
+			"/public/",
+			"/public",
+			"../_images",
+			"../../../resources",
+			"(../images",
+			"(../_images",
+			"../_images",
+			"icons",
+			"ui-icons_bbbbbb_256x240.png",
+			"(images",
+			"close_tag",
+			"dot"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"(/images",
+			"'/fonts",
+			"(/images/",
+			"'/images/",
+			"(/images/",
+			"images/",
+			"",
+			"/public/images",
+			"/public",
+			"(/images",
+			"/images",
+			"(../images"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 1225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								731,
+								731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/css/common.css",
+					"settings":
+					{
+						"buffer_size": 3019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2489,
+								2489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 1.0,
+						"translation.y": 1485.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 202.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"didgeridoo",
+				"/Users/flanpackdeseis/www/didgeridoo/app.js"
+			],
+			[
+				"app",
+				"/Users/flanpackdeseis/www/didgeridoo/app.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 176.0,
+	"status_bar_visible": true
+}
