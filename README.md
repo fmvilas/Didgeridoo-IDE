@@ -9,9 +9,6 @@ Didgeridoo is a web-based IDE. It's in an so early stage.
 ## Documentation
 _(Coming soon)_
 
-## Examples
-_(Coming soon)_
-
 ## Contributing
 Contributing is more than welcome, it's needed for that kind of project.
 
