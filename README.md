@@ -22,7 +22,7 @@ Copyright (c) 2012 Francisco Méndez Vilas
 Licensed under the GPL license.
 
 ## Author
-Francisco Méndez Vilas
-[www.fmvilas.com](http://www.fmvilas.com)
-[@fmvilas](http://www.twitter.com/fmvilas)
+Francisco Méndez Vilas <br/>
+[www.fmvilas.com](http://www.fmvilas.com) <br/>
+[@fmvilas](http://www.twitter.com/fmvilas) <br/>
 [fmvilas@gmail.com](mailto:fmvilas@gmail.com)
