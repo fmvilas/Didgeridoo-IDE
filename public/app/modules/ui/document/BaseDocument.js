@@ -1,96 +1,96 @@
 "use strict";
 define(function() {
-	
-    var moduleName = 'BaseDocument';
-	
-    var BaseDocument = function() {
-        
-        //It forces to instantiate the class
-        if ( !(this instanceof BaseDocument) )
-            return new BaseDocument();
-        
-        var _id = 'document' + new Date().getTime(),
-        _state = 'closed',
-        _url = '',
-        _title = '';
-    	
-        //Initialize
-        didgeridoo.documents = didgeridoo.documents || {};
 
-        //Events
-        didgeridoo.observer.subscribe('Document.change', function(documentId) {
-            var doc = didgeridoo.documents[documentId];
+	var moduleName = 'BaseDocument';
 
-            if( doc ) {
-                this.setState( doc.getCodeView().getEditor().isClean() ? 'loaded' : 'dirty' );
-            }
+	var BaseDocument = function() {
 
-            if( this.getState() === 'dirty' ) {
+		//It forces to instantiate the class
+		if ( !(this instanceof BaseDocument) )
+			return new BaseDocument();
 
-            }
-        });
+		var _id = 'document' + new Date().getTime(),
+		_state = 'closed',
+		_url = '',
+		_title = '';
 
-        this.close = function() {
-            didgeridoo.Action.do('FileClose', _id);
-        };
-    		
-        this.getId = function() {
-            return _id;
-        };
-    		
-        this.getState = function() {
-            return _state;
-        };
+		//Initialize
+		didgeridoo.documents = didgeridoo.documents || {};
 
-        this.setState = function(newState) {
-            var _oldState = _state;
-            _state = newState;
-            didgeridoo.observer.publish('Document.state.change', {
-                oldState: _oldState,
-                newState: newState
-            });
-        };
-    		
-        this.getURL = function() {
-            return _url;
-        };
+		//Events
+		didgeridoo.observer.subscribe('Document.change', function(documentId) {
+			var doc = didgeridoo.documents[documentId];
 
-        this.setURL = function(newURL) {
-            _url = newURL;
-        };
-    		
-        this.getTitle = function() {
-            return _title;
-        };
+			if( doc ) {
+				this.setState( doc.getCodeView().getEditor().isClean() ? 'loaded' : 'dirty' );
+			}
 
-        this.setTitle = function(newTitle) {
-            _title = newTitle;
-        };
-    		
-    };
+			if( this.getState() === 'dirty' ) {
 
-    /*
-     * TODO:
-     * -----
-     * Create a DocumentTab Interface and DocumentTabs collection for managing tabs properly
-     * 
-     */
-    var DocumentTabs = (function() {
+			}
+		});
 
-    })();
+		this.close = function() {
+			didgeridoo.Action.do('FileClose', _id);
+		};
 
-    var DocumentTab = function(documentId, title) {
-        //It forces to instantiate the class
-        if ( !(this instanceof DocumentTab) )
-            return new DocumentTab();
+		this.getId = function() {
+			return _id;
+		};
 
-        var _title = title || 'Untitled',
-            _domRef;
+		this.getState = function() {
+			return _state;
+		};
 
-        $(didgeridoo.layout.getCenterPanel()).tabs( 'add', '#' + documentId, _title );
-    };
-    	
-    	
-    return BaseDocument;
-	
+		this.setState = function(newState) {
+			var _oldState = _state;
+			_state = newState;
+			didgeridoo.observer.publish('Document.state.change', {
+				oldState: _oldState,
+				newState: newState
+			});
+		};
+
+		this.getURL = function() {
+			return _url;
+		};
+
+		this.setURL = function(newURL) {
+			_url = newURL;
+		};
+
+		this.getTitle = function() {
+			return _title;
+		};
+
+		this.setTitle = function(newTitle) {
+			_title = newTitle;
+		};
+
+	};
+
+	/*
+	 * TODO:
+	 * -----
+	 * Create a DocumentTab Interface and DocumentTabs collection for managing tabs properly
+	 *
+	 */
+	var DocumentTabs = (function() {
+
+	})();
+
+	var DocumentTab = function(documentId, title) {
+		//It forces to instantiate the class
+		if ( !(this instanceof DocumentTab) )
+			return new DocumentTab();
+
+		var _title = title || 'Untitled',
+			_domRef;
+
+		$(didgeridoo.layout.getCenterPanel()).tabs( 'add', '#' + documentId, _title );
+	};
+
+
+	return BaseDocument;
+
 }); //end of define
