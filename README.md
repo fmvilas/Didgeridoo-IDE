@@ -1,4 +1,4 @@
-![](./logo.png)
+![](logo.png)
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
