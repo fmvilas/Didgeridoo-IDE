@@ -1,14 +1,10 @@
-# Didgeridoo
+![](./logo.png)
 
-Web-based IDE
+Didgeridoo is a web-based IDE. It's in an so early stage.
 
-## Getting Started
-Install the module with: `npm install Didgeridoo`
+[Watch it running](http://didgeridoo.ftzcollective.com)
 
-```javascript
-var Didgeridoo = require('Didgeridoo');
-Didgeridoo.awesome(); // "awesome"
-```
+#It's a one man project. COLLABORATION NEEDED!
 
 ## Documentation
 _(Coming soon)_
@@ -17,7 +13,9 @@ _(Coming soon)_
 _(Coming soon)_
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
+Contributing is more than welcome, it's needed for that kind of project.
+
+For contributing contact me to properly setup your environment (sorry, I'll post a guide here soon).
 
 ## Release History
 _(Nothing yet)_
@@ -25,3 +23,9 @@ _(Nothing yet)_
 ## License
 Copyright (c) 2012 Francisco Méndez Vilas  
 Licensed under the GPL license.
+
+## Author
+Francisco Méndez Vilas
+[www.fmvilas.com](http://www.fmvilas.com)
+[@fmvilas](http://www.twitter.com/fmvilas)
+[fmvilas@gmail.com](mailto:fmvilas@gmail.com)
