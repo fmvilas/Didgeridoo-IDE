@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ![](logo.png)
+=======
+![](./Didgeridoo-IDE/logo.png)
+>>>>>>> Update README.md
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
