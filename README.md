@@ -1,8 +1,8 @@
-<a href="http://didgeridoo.ftzcollective.com" target="_blank"><img src="https://raw.github.com/fmvilas/Didgeridoo-IDE/master/logo.png"></a>
+<a href="http://didgeridoo.ftzcollective.com/ide" target="_blank"><img src="https://raw.github.com/fmvilas/Didgeridoo-IDE/master/logo.png"></a>
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
-<a href="http://didgeridoo.ftzcollective.com" target="_blank">See it running</a>
+<a href="http://didgeridoo.ftzcollective.com/ide" target="_blank">See it running</a>
 
 #It's a one man project. COLLABORATION NEEDED!
 
@@ -134,7 +134,16 @@ Server side is based on Laravel
 ## Contributing
 Contributing is more than welcome, it's needed for that kind of project.
 
-**How to setup your environment for local development:**
+### How to setup your environment for local development:
+
+**0) Required software**
+
+* Unix system (Linux, MacOS X, ...)
+* Apache 2.0
+* PHP 5.3
+* MySQL 5
+* Git
+* An up-to-date browser (I'm using Chrome)
 
 **1) Add to httpd.conf**
 
