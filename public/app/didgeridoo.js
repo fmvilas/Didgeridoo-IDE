@@ -21,7 +21,7 @@ require.config({
         'actions': {
             deps: ['core']
         },
-        'jstree': {
+        'dynatree': {
             deps: ['jquery']
         },
         'bootstrap': {
@@ -44,34 +44,34 @@ define([
     'actions',
     'codemirror_script'
 ], function(core) {
-    
+
     didgeridoo.currentProject = 'test';
-    
+
     // Load dialog modules
 
     require(['modules/ui/dialog/dialogs']);
 
     // Constructs the Didgeridoo User Interface.
     require(['modules/ui/layout/layout'], function(layout) {
-        
+
         require(['modules/ui/main-menu/main'], function(MainMenu) {
             new MainMenu().renderTo( layout.getNorthPanel() );
         });
         /*didgeridoo.modules.load('ui/dom-inspector', function(DOMInspector) {
 			var di = new DOMInspector();
-			
+
 			di.renderTo('.ui-layout-east > .container');
 		});*/
-        
-            
+
+
         layout.getSideBar().addPanel('modules/ui/project-explorer/main');
         layout.getSideBar().addPanel('modules/ui/tools/main');
-        
+
         require(['modules/ui/document/HTMLDocument'], function(HTMLDocument) {
             var doc1 = new HTMLDocument();
-			
-            doc1.load('/templates/test/index.html', 'text/html');	
+
+            doc1.load('/templates/test/index.html', 'text/html');
         });
     });
-    
+
 });

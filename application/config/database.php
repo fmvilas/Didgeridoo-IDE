@@ -69,16 +69,7 @@ return array(
 			'password' => '1234',
 			'charset'  => 'utf8',
 			'prefix'   => '',
-		),
-		/*'mysql' => array(
-			'driver'   => 'mysql',
-			'host'     => 'localhost',
-			'database' => 'pymftsyw_didgeridoo',
-			'username' => 'pymftsyw',
-			'password' => 'janoseco',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-		),*/
+		)
 
 	)
 
