@@ -1,8 +1,8 @@
-<a href="http://didgeridoo.ftzcollective.com" target="_blank"><img src="https://raw.github.com/fmvilas/Didgeridoo-IDE/master/logo.png"></a>
+<a href="http://didgeridoo.ftzcollective.com/ide" target="_blank"><img src="https://raw.github.com/fmvilas/Didgeridoo-IDE/master/logo.png"></a>
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
-<a href="http://didgeridoo.ftzcollective.com" target="_blank">See it running</a>
+<a href="http://didgeridoo.ftzcollective.com/ide" target="_blank">See it running</a>
 
 #It's a one man project. COLLABORATION NEEDED!
 
