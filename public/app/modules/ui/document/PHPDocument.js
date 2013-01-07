@@ -1,22 +1,25 @@
 "use strict";
 define(['require',
 'text!./Document.html',
-'modules/ui/document/BaseDocument',
+'modules/ui/document/PlainTextDocument',
 'modules/ui/layout/layout'],
-function(require, html, BaseDocument) {
+function(require, html, PlainTextDocument) {
 
-    var moduleName = 'PlainTextDocument',
-    cssFile = require.toUrl('./PlainTextDocument.css');
+    var moduleName = 'PHPDocument',
+    cssFile = require.toUrl('./PHPDocument.css');
 
 
-    var PlainTextDocument = function() {
+    var PHPDocument = function() {
 
         //It forces to instantiate the class
-        if ( !(this instanceof PlainTextDocument) )
-            return new PlainTextDocument();
+        if ( !(this instanceof PHPDocument) )
+            return new PHPDocument();
 
         //Inherit from BaseDocument
-        didgeridoo.utils.extend(this, new BaseDocument);
+        didgeridoo.utils.extend(this, new PlainTextDocument);
+
+        //Override methods
+        this.load = PHPDocument.prototype.load;
 
         if( typeof didgeridoo.documents[this.getId()] === 'undefined' ) {
             didgeridoo.documents[this.getId()] = this;
@@ -35,45 +38,9 @@ function(require, html, BaseDocument) {
 
     };
 
-    PlainTextDocument.prototype.load = function(url, callback) {
+    PHPDocument.prototype.load = function(url, callback) {
 
-        var extension = url.match(/\.[\w]*$/g),
-            mimeType = 'text/plain',
-            mode;
-
-        if( extension.length > 0 ) {
-            extension = extension[0].substring(1).toUpperCase();
-
-            switch( extension ) {
-                case 'HTML':
-                    type = 'HTMLDocument';
-                    mimeType = 'text/html';
-                    mode = 'htmlmixed';
-                break;
-
-                case 'CSS':
-                    mimeType = 'text/css';
-                    mode = 'css';
-                break;
-
-                case 'JS':
-                    mimeType = 'text/javascript';
-                    mode = 'javascript';
-                break;
-
-                case 'JAVA':
-                    mimeType = 'text/x-java';
-                break;
-            }
-        }
-
-        var modulesToLoad;
-
-        if( typeof mode !== 'undefined' ) {
-            modulesToLoad = ['modules/ui/codeview/main', 'libraries/codemirror/mode/' + mode + '/' + mode];
-        } else {
-            modulesToLoad = ['modules/ui/codeview/main'];
-        }
+        var extension = url.match(/\..*$/g);
 
         this.setTitle( url.lastIndexOf('/') != -1 ? url.substr(url.lastIndexOf('/')+1) : url );
         this.setURL( url );
@@ -107,15 +74,15 @@ function(require, html, BaseDocument) {
             $designerContainer = $('.designer-container', $docContainer),
             $codeviewContainer = $('.codeview-container', $docContainer);
 
-        $docWrapper.addClass('plain-text-document');
+        $docWrapper.addClass('php-document');
 
-        require(modulesToLoad, function(CodeView) {
+        require(['modules/ui/codeview/main', 'libraries/codemirror/mode/php/php'], function(CodeView) {
             _this.setCodeView( new CodeView(_id) );
 
             $(didgeridoo.layout.getCenterPanel()).tabs( 'select', '#' + _id );
             _this.getCodeView().renderTo($codeviewContainer[0], function() {
 
-                this.load(url, mimeType, function() {
+                this.load(url, 'application/x-httpd-php', function() {
                     _this.setState('loaded');
                 });
             });
@@ -126,6 +93,6 @@ function(require, html, BaseDocument) {
         didgeridoo.observer.publish(moduleName + '.rendered');
     };
 
-    return PlainTextDocument;
+    return PHPDocument;
 
 }); //end of define

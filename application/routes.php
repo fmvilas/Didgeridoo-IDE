@@ -89,7 +89,7 @@ Route::post('/project', array('before' => 'auth', function() {
         $projectPath = '../didgeridoo-content/user/' . Auth::user()->username . '/repositories/';
 
         $repo = Repository::open($projectPath.$projectName, new Binary('/usr/local/git/bin/git'), 0770);
-        
+
         return 'Project ' . $projectName . ' created succesfully!';
     } else {
         return Response::error('400');
@@ -104,12 +104,12 @@ Route::get('/project/(:any)/files', array('before' => 'auth', function($projectN
     $dirHandler = opendir($fullPath);
 
     $files = array();
-    
+
     $numberOfFiles = 0;
     while( $file = readdir($dirHandler) ) {
         if( $file != '.' && $file != '..' ) {
             $numberOfFiles++;
-            
+
             $files[] = array(
                 'title' => $file,
                 'key' => is_dir($fullPath.'/'.$file) ? $path.$file.'/' : $path.$file,
@@ -131,6 +131,7 @@ Route::get('/project/(:any)/files', array('before' => 'auth', function($projectN
             'modified' => filemtime($fullPath),
             'expand' => true,
             'isFolder' => true,
+            'isLazy' => true,
             'children' => $files
         );
 
@@ -138,7 +139,7 @@ Route::get('/project/(:any)/files', array('before' => 'auth', function($projectN
     }
 
     closedir($dirHandler);
-    
+
     return json_encode( $files );
 }));
 
