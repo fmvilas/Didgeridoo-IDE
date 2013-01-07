@@ -193,6 +193,33 @@ INSERT INTO `users` VALUES(1, 'demo', '$2a$08$ZGy0iRm/w9Jl3MQGy3JU/.HfV4XEs8Hv8s
 2. Find ```'connections' => array(```. *It is, maybe, at the end of the file*.
 3. Change the username and password attributes to match your MySQL user configuration, or create a user called secure_user with 1234 as the password ;) (I know, it's not secure, it's just for development).
 
+**5) Tell Didgeridoo where is your GIT binary**
+
+*If you don't have GIT installed install it before proceeding.*
+
+1. Find your GIT binary file, usually it is at /usr/bin/git or /usr/local/bin/git or /usr/local/git/bin/git...
+2. Go to /application/routes.php and find this code:
+```
+new Binary('/usr/local/git/bin/git'), 0770);
+```
+
+3. Replace ```/usr/local/git/bin/git```with the path of your GIT binary
+
+**6) Provide some content**
+
+Create a directory called 'didgeridoo-content'. It must be one level up of the didgeridoo directory. It is, i.e.:
+
+* /Users/YOURUSERNAME/www/didgeridoo/
+* /Users/YOURUSERNAME/www/didgeridoo-content/
+
+Inside this directory there must be the following structure:
+
+* /Users/YOURUSERNAME/www/didgeridoo-content/
+	* user/
+		* demo/
+			* repositories/
+
+It means, this is the repositories directory of a 'demo'-called user. You can leave repositories blank, go to Didgeridoo, log in as 'demo' and then create a new project. After creating a new project, a GIT repository is automatically created in this directory, so you can put there as many files as you want.
 
 ## License
 Licensed under the GPL license.<br />
