@@ -33,7 +33,7 @@ use TQ\Git\Repository\Repository;
 |
 */
 
-Route::get('/', array('before' => 'auth', 'as' => 'home', 'do' => function() {
+Route::get('/', array('as' => 'home', 'do' => function() {
 	return View::make('home.index');
 }));
 
