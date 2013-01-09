@@ -397,7 +397,7 @@ define(function() {
                 assert( typeof action === 'function',
                         'action parameter must be a function.' );
 
-                if( _get(actionName, event) === null ) {
+                if( _get(actionName) === null ) {
                     _actions.push({
                         'name': actionName,
                         'action': action
