@@ -2,7 +2,11 @@
 
 Didgeridoo is a web-based IDE. It's in an so early stage.
 
-<a href="http://didgeridoo.ftzcollective.com/ide" target="_blank">See it running</a>
+ATTENTION: <a href="http://didgeridoo.ftzcollective.com/ide" target="_blank">This demo</a> is not completely functional. It's a demo of how it can look in a future. Anyway you can create files, open files (from sidebar), save files (with Save As and with / as the root of the project). The WYSIWYG editor can perform some operations:
+* Select (click)
+* Resize (double-click)
+* Edit Text (Enter/Esc)
+* Remove (Backspace)
 
 #It's a one man project. COLLABORATION NEEDED!
 
