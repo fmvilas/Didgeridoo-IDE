@@ -6,5 +6,6 @@ node_modules
 .log
 npm-debug.log
 didgeridoo.sublime-project
+didgeridoo.sublime-workspace
 public.pem
 build
