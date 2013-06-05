@@ -162,7 +162,7 @@ define(['require', 'modules/ui/dialog/Dialog'], function(require, Dialog) {
                 return;
             }
 
-            didgeridoo.Action.do('FileSave', '/p/' + didgeridoo.currentProject + '/f' + url);
+            didgeridoo.Action.do('FileSave', url);
             modal.hide();
         }
     };

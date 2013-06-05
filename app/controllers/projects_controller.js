@@ -161,9 +161,9 @@ action(function fileOpen() {
 
 action(function fileSave() {
     var fs = require('fs'),
-        path = params[0].substr( ('p/'+params.id+'/f/').length );
+        path = params[0];
 
-    console.dir(path);
+    console.dir(app.pathToCDN + '/' + params.id + '/' + path);
 
     fs.writeFile(app.pathToCDN + '/' + params.id + '/' + path, req.body.body, { flag: 'w+', mode: 0770 }, function(err) {
         if(err) {
