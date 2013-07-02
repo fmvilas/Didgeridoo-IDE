@@ -388,7 +388,7 @@ define(function() {
 
             var _actions = [];
 
-            //Register an action associated with an observer event
+            //Register an action
             var _register = function(actionName, action) {
                 assert( typeof actionName === 'string' &&
                         actionName.length > 0,

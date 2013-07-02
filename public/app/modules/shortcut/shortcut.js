@@ -41,7 +41,7 @@ define(['underscore'], function() {
 		return result;
 	};
 	
-	didgeridoo.shortcut.isBusy = function(key) {
+	didgeridoo.shortcut.exists = function(key) {
 		return _.any(didgeridoo.shortcut.map, function(r) {
 			return r.key === key;
 		});
@@ -52,7 +52,7 @@ define(['underscore'], function() {
 			//throw ShortcutNoActionError
 		}
 
-		if( !didgeridoo.shortcut.isBusy(strKey) ) {
+		if( !didgeridoo.shortcut.exists(strKey) ) {
 			var key = _strToKey(strKey);
 
 			key.action = action;
