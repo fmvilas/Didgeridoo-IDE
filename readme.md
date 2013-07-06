@@ -39,7 +39,7 @@ Didgeridoo is based on a stack of edge technologies, NodeJS ([CompoundJS](compou
 		
 		# IMPORTANT: Note that db.addUser and db.User.save are not referring to the same kind of user. First adds a new user to the MongoDB system while second adds a new user to the Didgeridoo's User collection (User table in SQL). So, first is used to access MongoDB and second is used to log on Didgeridoo IDE.
 
-		#G o back to Window 2 and press Ctrl+C to stop the mongod process and write:
+		# Go back to Window 2 and press Ctrl+C to stop the mongod process and write:
 		sudo mongod --auth
 		# If mongod process terminate inmediately try closing all terminal windows and type it again.
 		
