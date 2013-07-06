@@ -1,10 +1,10 @@
 #Didgeridoo developer's handbook
 
-##Server side
+##Getting started
 
 ###Introduction
 
-Didgeridoo is based on a stack of edge technologies, NodeJS ([CompoundJS](compoundjs.com) and [MongoDB](mongodb.org)).
+Didgeridoo is based on a stack of edge technologies, NodeJS ([CompoundJS](compoundjs.com)) and [MongoDB](mongodb.org).
 
 ###Installation
 
@@ -25,25 +25,36 @@ Didgeridoo is based on a stack of edge technologies, NodeJS ([CompoundJS](compou
 * [Install MongoDB](http://docs.mongodb.org/manual/installation/)
 * Configure MongoDB and add some data:
 
-		#Open a new terminal window (let's call it Window 2) and write:
+		# Open a new terminal window (let's call it Window 2) and write:
 		mongod
 
-		#Back to the initial terminal window (let's call it Window 1):
+		# Back to the initial terminal window (let's call it Window 1):
 		mongo
-		#Now in mongo…
+		# Now in mongo…
 		> db.addUser({user: "admin", pwd: "1234", roles: []})
 		> use didgeridoo
-		> db.User.save({name: "demo", email: "demo@didgeridoo.io", password: "1234"})
+		> db.User.save({ "_id" : ObjectId("5196534c9c253bdbb1d00fb6"), "name" : "Test Project", "owner" : ObjectId("51964caa9c253bdbb1d00fb4") })
+		> db.Project.save({ "_id" : ObjectId("5196534c9c253bdbb1d00fb6"), "name" : "Test Project", "owner" : ObjectId("51964caa9c253bdbb1d00fb4") })
 		> exit
-
-		#Go back to Window 2 and press Ctrl+C to stop the mongod process and write:
-		sudo mongod --auth
-		#If mongod process terminate inmediately try closing all terminal windows and type it again.
 		
-		#Now go to Window 1 and try connection:
+		# IMPORTANT: Note that db.addUser and db.User.save are not referring to the same kind of user. First adds a new user to the MongoDB system while second adds a new user to the Didgeridoo's User collection (User table in SQL). So, first is used to access MongoDB and second is used to log on Didgeridoo IDE.
+
+		#G o back to Window 2 and press Ctrl+C to stop the mongod process and write:
+		sudo mongod --auth
+		# If mongod process terminate inmediately try closing all terminal windows and type it again.
+		
+		# Now go to Window 1 and try connection:
 		mongo -u admin -p 1234 didgeridoo
 
-		#At this point you should be able to connect to mongo this way. If not contact me at fmvilas@gmail.com.
+		# At this point you should be able to connect to mongo this way. If not contact me at fmvilas@gmail.com.
+
+		# Now let's create some content for the project created above:
+		mkdir ~/didgeridoo-content
+		mkdir ~/didgeridoo-content/5196534c9c253bdbb1d00fb6
+		
+		# Change to the project dir and put some content inside
+		cd ~/didgeridoo-content/5196534c9c253bdbb1d00fb6
+		echo "This is a test file" > test.txt
 		
 * If you've reached this point without problems (then you're my hero) you should have the Window 2 with the *sudo mongod --auth* command. Don't close it. It's the MongoDB daemon. Just go to Window 1 and type:
 
@@ -51,6 +62,38 @@ Didgeridoo is based on a stack of edge technologies, NodeJS ([CompoundJS](compou
 		compound s
 
 * You should have Didgeridoo listening on port 3000, so go to your web browser and navigate to **localhost:3000/ide**
+
+##Server side
+
+###CompoundJS
+
+Didgeridoo is using CompoundJS, which is a framework that works on top of [Express](http://www.expressjs.com).
+
+CompoundJS creates a server instance listening at port 3000 by default. If you want Didgeridoo running on another port you can specify it as follows:
+
+	# Listen on port 80 (you might need to sudo)
+	sudo compound s 80
+
+###MongoDB
+
+Didgeridoo is using MongoDB, which is a NoSQL Document-oriented database.
+
+For those with a relational databases background:
+
+Compared to relational databases, for example, collections could be considered as tables as well as documents could be considered as records. But they are different: every record in a table has the same sequence of fields, while documents in a collection may have fields that are completely different. For example, we can have 2 users with different sets of information, like this:
+
+	{
+		users: [
+			{
+				name: "Fran",
+				age: 29
+			},
+			{
+				email: "john@didgeridoo.io",
+				eyeColor: "blue"
+			}
+		]
+	}
 
 ##Client side
 
