@@ -9,3 +9,5 @@ didgeridoo.sublime-project
 didgeridoo.sublime-workspace
 public.pem
 build
+app.build.js
+build.sh
