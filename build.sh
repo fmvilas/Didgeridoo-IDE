@@ -1,4 +1,4 @@
-#!/usr/local/bin
+#!/bin/bash
 
 # Project Name: Didgeridoo IDE
 # License: GPLv3
