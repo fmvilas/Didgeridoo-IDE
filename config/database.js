@@ -4,9 +4,9 @@ module.exports =
       "url": "mongodb://admin:1234@localhost:27017/didgeridoo"
     }
   , "test":
-    { "driver":   "postgres"
+    { "driver":   "mongodb"
     }
   , "production":
-    { "driver":   "postgres"
+    { "driver":   "mongodb"
     }
   };
